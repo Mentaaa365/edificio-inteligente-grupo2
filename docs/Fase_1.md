@@ -8,7 +8,7 @@ En esta fase no se usa hardware. El edificio se modela como un grafo, se simulan
 |---|---|---|
 | `grafo.json` | [`modelo/grafo.json`](../modelo/grafo.json) | Hecho |
 | Simulación con NetworkX y escenarios | [`simulacion/`](../simulacion) | Hecho, con resultados en `simulacion/resultados/` |
-| Proyecto Wokwi | [wokwi.com/projects/480903247493856257](https://wokwi.com/projects/480903247493856257) y [`firmware/evacuacion_esp32/`](../firmware/evacuacion_esp32) | Creado y guardado. Compila y arranca. **Falta completar la tabla de pruebas** (sección 4) |
+| Proyecto Wokwi | [wokwi.com/projects/480903247493856257](https://wokwi.com/projects/480903247493856257) y [`firmware/evacuacion_esp32/`](../firmware/evacuacion_esp32) | Creado, guardado y probado: la tabla de pruebas de la sección 4 se cumple completa |
 
 ## 1. Modelo
 
@@ -145,12 +145,19 @@ Necesita `g++`. Compila en la PC el mismo `rutas.h` del firmware y el sketch com
 | Firmware (C++) frente a Python y NetworkX, en las 256 × 256 combinaciones de bloqueos y zonas ocupadas | 65 536 de 65 536 iguales: costos, siguiente arista, salida asignada y zonas aisladas |
 | Sketch completo en PC: 16 pasos con rebotes en los pulsadores | 16 de 16: un solo evento por pulsación, estado, rutas del JSON y color de cada tramo |
 | Compilación para ESP32 en Wokwi | Correcta. El programa arranca y emite `LISTO` con las ocho rutas del escenario S0 |
-| Pulsadores en Wokwi | B0 y B4 comprobados: `RUTA_ACTIVA`, e6 bloqueado y Laboratorio desviado a S1 con costo 30,50 m, igual que el modelo |
-| Resto de la tabla de pruebas de la sección 4 y colores de la tira en Wokwi | **Pendiente.** Hacerlo con la pestaña de Wokwi visible: el navegador pausa la simulación si la pestaña queda oculta |
+| Alarma (B0) en Wokwi | `RUTA_ACTIVA`; e1, e4, e5, e6 y e7 en verde con el punto brillante avanzando hacia la salida; e2, e3 y e8 apagados |
+| Bloqueos (B4, B8, B9) | e6 en rojo y Laboratorio a S1 (30,50 m); con e6 + e7 el Auditorio sale por e8 hasta S3 (47 m); con e6 + e7 + e8 queda aislado y el estado pasa a `RUTA_PARCIAL` |
+| Zona aislada (e2 + e3 + e7 + e8) | 2 zonas aisladas; e6 en ámbar intermitente; bloqueos en rojo fijo |
+| Sin ruta (e1 + e5 + e7) | `SIN_RUTA`; pasillos libres en rojo intermitente y bloqueados en rojo fijo |
+| Reinicio (B7) | `NORMAL`, tira apagada. Un bloqueo sin alarma se ve en rojo tenue |
+| PIR1 (*Simulate motion*) | `"ocupadas":["Z7"]`; el Laboratorio cambia de S2 (19 m) a S1 (23 m) y vuelve a los 6 s |
+| Velocidad y tiempo de cálculo | Simulación al 100 % de la velocidad real; Dijkstra en unos 700 µs simulados |
+
+Las pruebas de Wokwi se hicieron el 16 de noviembre de 2026 leyendo el JSON del monitor serie y el color de cada LED. El navegador pausa la simulación si la pestaña queda oculta.
 
 ## 6. Qué falta para cerrar la Fase 1
 
-1. Completar en Wokwi la tabla de pruebas de la sección 4 con capturas en `docs/evidencias/`.
+1. Repetir en Wokwi la tabla de pruebas de la sección 4 y guardar capturas propias en `docs/evidencias/`.
 2. Ejecutar la simulación y `verificar.py` en el equipo de cada integrante.
 3. Justificar con bibliografía la velocidad de marcha y decidir si α, β y el riesgo se mantienen.
 4. Estudio del código por los tres. El docente no acepta código generado sin comprender y evalúa a cada uno por separado: cada integrante debe poder explicar el peso de una arista, por qué se usa Dijkstra multi-fuente, el desempate, el antirrebote y la animación, y hacer en vivo un cambio como modificar una longitud en `grafo.json` y regenerar.

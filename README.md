@@ -9,7 +9,7 @@ Ante una zona bloqueada o una emergencia simulada, el sistema calcula la ruta se
 | Fase | Estado | Documento |
 |---|---|---|
 | 0. Arranque | Cerrada | [Fase 0](docs/Fase_0.md) |
-| 1. Modelo y simulación previa | Modelo, simulación y [proyecto Wokwi](https://wokwi.com/projects/480903247493856257) hechos. Falta completar las pruebas en Wokwi | [Fase 1](docs/Fase_1.md) |
+| 1. Modelo y simulación previa | Modelo, simulación y [proyecto Wokwi](https://wokwi.com/projects/480903247493856257) hechos y probados. Faltan las capturas de evidencia y el estudio del código por el grupo | [Fase 1](docs/Fase_1.md) |
 | 2. Hardware incremental | Pendiente | |
 | 3. Servidor y dashboard | Pendiente | |
 | 4. Integración y pruebas | Pendiente | |
