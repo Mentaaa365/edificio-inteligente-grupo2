@@ -1,0 +1,35 @@
+# Servidor de la Fase 3 · Python 3.13 · versiones fijadas el 17/11/2026 (pip freeze)
+# Instalar con:  .\.venv\Scripts\python.exe -m pip install -r backend\requirements.txt
+
+# --- dependencias directas
+Django==5.2.19              # framework web (versión LTS)
+channels==4.3.2             # WebSocket para Django
+daphne==4.2.3               # servidor ASGI que usa "runserver" con Channels
+django-environ==0.14.0      # lee backend/.env
+networkx==3.7               # lo importa simulacion/modelo.py
+pyserial==3.5               # puente_serial: lee el ESP32 conectado por USB
+
+# --- dependencias de las anteriores (fijadas para que los tres tengan lo mismo)
+asgiref==3.13.0
+attrs==26.1.0
+autobahn==26.11.1
+Automat==25.4.16
+cbor2==6.3.0
+cffi==2.1.1
+constantly==23.10.4
+cryptography==50.0.2
+hyperlink==21.0.0
+idna==3.20
+Incremental==24.11.0
+msgpack==1.2.4
+packaging==26.3
+pycparser==3.12
+pyOpenSSL==26.4.0
+service-identity==26.1.0
+sqlparse==0.6.1
+Twisted==26.10.0
+txaio==26.6.1
+typing_extensions==4.16.0
+tzdata==2026.6
+ujson==6.1.0
+zope.interface==8.7
