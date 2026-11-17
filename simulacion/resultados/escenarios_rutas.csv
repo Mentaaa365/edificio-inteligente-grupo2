@@ -1,0 +1,65 @@
+escenario,descripcion,bloqueos,ocupadas,estado,zona,salida,longitud_m,costo_modelo_m,t_evac_s,ruta
+S0,Sin bloqueos,-,-,RUTA_ACTIVA,Z1,S1,11.0,11.0,9.17,Z1>C1>S1
+S0,Sin bloqueos,-,-,RUTA_ACTIVA,Z2,S1,11.0,11.0,9.17,Z2>C1>S1
+S0,Sin bloqueos,-,-,RUTA_ACTIVA,Z3,S2,19.0,19.0,15.83,Z3>C2>C5>S2
+S0,Sin bloqueos,-,-,RUTA_ACTIVA,Z4,S3,23.0,23.0,19.17,Z4>C3>C4>S3
+S0,Sin bloqueos,-,-,RUTA_ACTIVA,Z5,S3,23.0,23.0,19.17,Z5>C3>C4>S3
+S0,Sin bloqueos,-,-,RUTA_ACTIVA,Z6,S3,11.0,11.0,9.17,Z6>C4>S3
+S0,Sin bloqueos,-,-,RUTA_ACTIVA,Z7,S2,10.0,10.0,8.33,Z7>C5>S2
+S0,Sin bloqueos,-,-,RUTA_ACTIVA,Z8,S3,11.0,11.0,9.17,Z8>C4>S3
+S1,Pasillo norte e6 bloqueado,e6,-,RUTA_ACTIVA,Z1,S1,11.0,11.0,9.17,Z1>C1>S1
+S1,Pasillo norte e6 bloqueado,e6,-,RUTA_ACTIVA,Z2,S1,11.0,11.0,9.17,Z2>C1>S1
+S1,Pasillo norte e6 bloqueado,e6,-,RUTA_ACTIVA,Z3,S1,23.0,30.5,19.17,Z3>C2>C1>S1
+S1,Pasillo norte e6 bloqueado,e6,-,RUTA_ACTIVA,Z4,S3,23.0,23.0,19.17,Z4>C3>C4>S3
+S1,Pasillo norte e6 bloqueado,e6,-,RUTA_ACTIVA,Z5,S3,23.0,23.0,19.17,Z5>C3>C4>S3
+S1,Pasillo norte e6 bloqueado,e6,-,RUTA_ACTIVA,Z6,S3,11.0,11.0,9.17,Z6>C4>S3
+S1,Pasillo norte e6 bloqueado,e6,-,RUTA_ACTIVA,Z7,S2,10.0,15.0,8.33,Z7>C5>S2
+S1,Pasillo norte e6 bloqueado,e6,-,RUTA_ACTIVA,Z8,S3,11.0,11.0,9.17,Z8>C4>S3
+S2,Salida S2 bloqueada (e7),e7,-,RUTA_ACTIVA,Z1,S1,11.0,11.0,9.17,Z1>C1>S1
+S2,Salida S2 bloqueada (e7),e7,-,RUTA_ACTIVA,Z2,S1,11.0,11.0,9.17,Z2>C1>S1
+S2,Salida S2 bloqueada (e7),e7,-,RUTA_ACTIVA,Z3,S1,23.0,23.0,19.17,Z3>C2>C1>S1
+S2,Salida S2 bloqueada (e7),e7,-,RUTA_ACTIVA,Z4,S3,23.0,23.0,19.17,Z4>C3>C4>S3
+S2,Salida S2 bloqueada (e7),e7,-,RUTA_ACTIVA,Z5,S3,23.0,23.0,19.17,Z5>C3>C4>S3
+S2,Salida S2 bloqueada (e7),e7,-,RUTA_ACTIVA,Z6,S3,11.0,11.0,9.17,Z6>C4>S3
+S2,Salida S2 bloqueada (e7),e7,-,RUTA_ACTIVA,Z7,S1,34.0,41.0,28.33,Z7>C5>C2>C1>S1
+S2,Salida S2 bloqueada (e7),e7,-,RUTA_ACTIVA,Z8,S3,11.0,11.0,9.17,Z8>C4>S3
+S3,Bloqueos múltiples e2 + e4,e2+e4,-,RUTA_ACTIVA,Z1,S1,11.0,16.5,9.17,Z1>C1>S1
+S3,Bloqueos múltiples e2 + e4,e2+e4,-,RUTA_ACTIVA,Z2,S1,11.0,16.5,9.17,Z2>C1>S1
+S3,Bloqueos múltiples e2 + e4,e2+e4,-,RUTA_ACTIVA,Z3,S2,19.0,25.5,15.83,Z3>C2>C5>S2
+S3,Bloqueos múltiples e2 + e4,e2+e4,-,RUTA_ACTIVA,Z4,S2,23.0,31.5,19.17,Z4>C3>C5>S2
+S3,Bloqueos múltiples e2 + e4,e2+e4,-,RUTA_ACTIVA,Z5,S2,23.0,31.5,19.17,Z5>C3>C5>S2
+S3,Bloqueos múltiples e2 + e4,e2+e4,-,RUTA_ACTIVA,Z6,S3,11.0,16.5,9.17,Z6>C4>S3
+S3,Bloqueos múltiples e2 + e4,e2+e4,-,RUTA_ACTIVA,Z7,S2,10.0,10.0,8.33,Z7>C5>S2
+S3,Bloqueos múltiples e2 + e4,e2+e4,-,RUTA_ACTIVA,Z8,S3,11.0,16.5,9.17,Z8>C4>S3
+S4,Salida S1 bloqueada (e1),e1,-,RUTA_ACTIVA,Z1,S2,31.0,38.5,25.83,Z1>C1>C2>C5>S2
+S4,Salida S1 bloqueada (e1),e1,-,RUTA_ACTIVA,Z2,S2,31.0,38.5,25.83,Z2>C1>C2>C5>S2
+S4,Salida S1 bloqueada (e1),e1,-,RUTA_ACTIVA,Z3,S2,19.0,19.0,15.83,Z3>C2>C5>S2
+S4,Salida S1 bloqueada (e1),e1,-,RUTA_ACTIVA,Z4,S3,23.0,23.0,19.17,Z4>C3>C4>S3
+S4,Salida S1 bloqueada (e1),e1,-,RUTA_ACTIVA,Z5,S3,23.0,23.0,19.17,Z5>C3>C4>S3
+S4,Salida S1 bloqueada (e1),e1,-,RUTA_ACTIVA,Z6,S3,11.0,11.0,9.17,Z6>C4>S3
+S4,Salida S1 bloqueada (e1),e1,-,RUTA_ACTIVA,Z7,S2,10.0,10.0,8.33,Z7>C5>S2
+S4,Salida S1 bloqueada (e1),e1,-,RUTA_ACTIVA,Z8,S3,11.0,11.0,9.17,Z8>C4>S3
+S5,Zona aislada: e2 + e3 + e6,e2+e3+e6,-,RUTA_PARCIAL,Z1,S1,11.0,16.5,9.17,Z1>C1>S1
+S5,Zona aislada: e2 + e3 + e6,e2+e3+e6,-,RUTA_PARCIAL,Z2,S1,11.0,16.5,9.17,Z2>C1>S1
+S5,Zona aislada: e2 + e3 + e6,e2+e3+e6,-,RUTA_PARCIAL,Z3,-,,,,-
+S5,Zona aislada: e2 + e3 + e6,e2+e3+e6,-,RUTA_PARCIAL,Z4,S3,23.0,30.5,19.17,Z4>C3>C4>S3
+S5,Zona aislada: e2 + e3 + e6,e2+e3+e6,-,RUTA_PARCIAL,Z5,S3,23.0,30.5,19.17,Z5>C3>C4>S3
+S5,Zona aislada: e2 + e3 + e6,e2+e3+e6,-,RUTA_PARCIAL,Z6,S3,11.0,11.0,9.17,Z6>C4>S3
+S5,Zona aislada: e2 + e3 + e6,e2+e3+e6,-,RUTA_PARCIAL,Z7,S2,10.0,15.0,8.33,Z7>C5>S2
+S5,Zona aislada: e2 + e3 + e6,e2+e3+e6,-,RUTA_PARCIAL,Z8,S3,11.0,11.0,9.17,Z8>C4>S3
+S6,Sin ruta: e1 + e5 + e7,e1+e5+e7,-,SIN_RUTA,Z1,-,,,,-
+S6,Sin ruta: e1 + e5 + e7,e1+e5+e7,-,SIN_RUTA,Z2,-,,,,-
+S6,Sin ruta: e1 + e5 + e7,e1+e5+e7,-,SIN_RUTA,Z3,-,,,,-
+S6,Sin ruta: e1 + e5 + e7,e1+e5+e7,-,SIN_RUTA,Z4,-,,,,-
+S6,Sin ruta: e1 + e5 + e7,e1+e5+e7,-,SIN_RUTA,Z5,-,,,,-
+S6,Sin ruta: e1 + e5 + e7,e1+e5+e7,-,SIN_RUTA,Z6,-,,,,-
+S6,Sin ruta: e1 + e5 + e7,e1+e5+e7,-,SIN_RUTA,Z7,-,,,,-
+S6,Sin ruta: e1 + e5 + e7,e1+e5+e7,-,SIN_RUTA,Z8,-,,,,-
+S7,Congestión: Auditorio ocupado (PIR1),-,Z7,RUTA_ACTIVA,Z1,S1,11.0,11.0,9.17,Z1>C1>S1
+S7,Congestión: Auditorio ocupado (PIR1),-,Z7,RUTA_ACTIVA,Z2,S1,11.0,11.0,9.17,Z2>C1>S1
+S7,Congestión: Auditorio ocupado (PIR1),-,Z7,RUTA_ACTIVA,Z3,S1,23.0,23.0,19.17,Z3>C2>C1>S1
+S7,Congestión: Auditorio ocupado (PIR1),-,Z7,RUTA_ACTIVA,Z4,S3,23.0,23.0,19.17,Z4>C3>C4>S3
+S7,Congestión: Auditorio ocupado (PIR1),-,Z7,RUTA_ACTIVA,Z5,S3,23.0,23.0,19.17,Z5>C3>C4>S3
+S7,Congestión: Auditorio ocupado (PIR1),-,Z7,RUTA_ACTIVA,Z6,S3,11.0,11.0,9.17,Z6>C4>S3
+S7,Congestión: Auditorio ocupado (PIR1),-,Z7,RUTA_ACTIVA,Z7,S2,10.0,13.0,8.33,Z7>C5>S2
+S7,Congestión: Auditorio ocupado (PIR1),-,Z7,RUTA_ACTIVA,Z8,S3,11.0,11.0,9.17,Z8>C4>S3

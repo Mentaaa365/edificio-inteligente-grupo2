@@ -1,0 +1,321 @@
+{
+ "descripcion": "Grafo del edificio del Grupo 2. Fuente única de verdad: de este archivo se generan firmware/evacuacion_esp32/grafo.h y el diagrama de Wokwi.",
+ "unidades": {
+  "coordenadas": "metros del modelo (1 m = 1 LED = 1,667 cm de maqueta)",
+  "longitud": "metros",
+  "costo_entero": "diezmilésimas de metro (0,0001 m)"
+ },
+ "maqueta": {
+  "ancho_m": 60,
+  "alto_m": 32.4,
+  "cm_por_m": 1.6667,
+  "base_cm": [
+   100,
+   54
+  ]
+ },
+ "parametros": {
+  "alfa_pct": 50,
+  "beta_pct": 100,
+  "riesgo_adyacente_pct": 50,
+  "velocidad_m_s": 1.2,
+  "total_led": 82
+ },
+ "nodos": [
+  {
+   "id": "S1",
+   "tipo": "salida",
+   "nombre": "Salida oeste",
+   "x_m": 4,
+   "y_m": 15.0
+  },
+  {
+   "id": "S2",
+   "tipo": "salida",
+   "nombre": "Salida norte",
+   "x_m": 20,
+   "y_m": 24.798
+  },
+  {
+   "id": "S3",
+   "tipo": "salida",
+   "nombre": "Salida este",
+   "x_m": 56,
+   "y_m": 15.0
+  },
+  {
+   "id": "C1",
+   "tipo": "interseccion",
+   "nombre": "",
+   "x_m": 12,
+   "y_m": 15.0
+  },
+  {
+   "id": "C2",
+   "tipo": "interseccion",
+   "nombre": "",
+   "x_m": 24,
+   "y_m": 15.0
+  },
+  {
+   "id": "C3",
+   "tipo": "interseccion",
+   "nombre": "",
+   "x_m": 36,
+   "y_m": 15.0
+  },
+  {
+   "id": "C4",
+   "tipo": "interseccion",
+   "nombre": "",
+   "x_m": 48,
+   "y_m": 15.0
+  },
+  {
+   "id": "C5",
+   "tipo": "interseccion",
+   "nombre": "",
+   "x_m": 26,
+   "y_m": 24.798
+  },
+  {
+   "id": "Z1",
+   "tipo": "zona",
+   "nombre": "Aula A",
+   "x_m": 10.2,
+   "y_m": 12.6
+  },
+  {
+   "id": "Z2",
+   "tipo": "zona",
+   "nombre": "Aula B",
+   "x_m": 13.8,
+   "y_m": 12.6
+  },
+  {
+   "id": "Z3",
+   "tipo": "zona",
+   "nombre": "Laboratorio",
+   "x_m": 24,
+   "y_m": 12.0
+  },
+  {
+   "id": "Z4",
+   "tipo": "zona",
+   "nombre": "Oficina",
+   "x_m": 34.2,
+   "y_m": 12.6
+  },
+  {
+   "id": "Z5",
+   "tipo": "zona",
+   "nombre": "Baños",
+   "x_m": 37.8,
+   "y_m": 12.6
+  },
+  {
+   "id": "Z6",
+   "tipo": "zona",
+   "nombre": "Bodega",
+   "x_m": 46.2,
+   "y_m": 12.6
+  },
+  {
+   "id": "Z7",
+   "tipo": "zona",
+   "nombre": "Auditorio",
+   "x_m": 28.4,
+   "y_m": 27.998
+  },
+  {
+   "id": "Z8",
+   "tipo": "zona",
+   "nombre": "Recepción",
+   "x_m": 49.8,
+   "y_m": 12.6
+  }
+ ],
+ "aristas": [
+  {
+   "id": "e1",
+   "tipo": "pasillo",
+   "u": "S1",
+   "v": "C1",
+   "longitud_m": 8,
+   "led_ini": 0,
+   "led_fin": 7,
+   "led_desde": "S1",
+   "pulsador": "B5",
+   "gpio": 33
+  },
+  {
+   "id": "e2",
+   "tipo": "pasillo",
+   "u": "C1",
+   "v": "C2",
+   "longitud_m": 12,
+   "led_ini": 8,
+   "led_fin": 19,
+   "led_desde": "C1",
+   "pulsador": "B1",
+   "gpio": 25
+  },
+  {
+   "id": "e3",
+   "tipo": "pasillo",
+   "u": "C2",
+   "v": "C3",
+   "longitud_m": 12,
+   "led_ini": 20,
+   "led_fin": 31,
+   "led_desde": "C2",
+   "pulsador": "B2",
+   "gpio": 26
+  },
+  {
+   "id": "e4",
+   "tipo": "pasillo",
+   "u": "C3",
+   "v": "C4",
+   "longitud_m": 12,
+   "led_ini": 32,
+   "led_fin": 43,
+   "led_desde": "C3",
+   "pulsador": "B3",
+   "gpio": 27
+  },
+  {
+   "id": "e5",
+   "tipo": "pasillo",
+   "u": "C4",
+   "v": "S3",
+   "longitud_m": 8,
+   "led_ini": 44,
+   "led_fin": 51,
+   "led_desde": "C4",
+   "pulsador": "B6",
+   "gpio": 13
+  },
+  {
+   "id": "e6",
+   "tipo": "pasillo",
+   "u": "C2",
+   "v": "C5",
+   "longitud_m": 10,
+   "led_ini": 52,
+   "led_fin": 61,
+   "led_desde": "C2",
+   "pulsador": "B4",
+   "gpio": 32
+  },
+  {
+   "id": "e7",
+   "tipo": "pasillo",
+   "u": "C5",
+   "v": "S2",
+   "longitud_m": 6,
+   "led_ini": 62,
+   "led_fin": 67,
+   "led_desde": "C5",
+   "pulsador": "B8",
+   "gpio": 18
+  },
+  {
+   "id": "e8",
+   "tipo": "pasillo",
+   "u": "C5",
+   "v": "C3",
+   "longitud_m": 14,
+   "led_ini": 68,
+   "led_fin": 81,
+   "led_desde": "C5",
+   "pulsador": "B9",
+   "gpio": 19
+  },
+  {
+   "id": "p1",
+   "tipo": "puerta",
+   "u": "Z1",
+   "v": "C1",
+   "longitud_m": 3
+  },
+  {
+   "id": "p2",
+   "tipo": "puerta",
+   "u": "Z2",
+   "v": "C1",
+   "longitud_m": 3
+  },
+  {
+   "id": "p3",
+   "tipo": "puerta",
+   "u": "Z3",
+   "v": "C2",
+   "longitud_m": 3
+  },
+  {
+   "id": "p4",
+   "tipo": "puerta",
+   "u": "Z4",
+   "v": "C3",
+   "longitud_m": 3
+  },
+  {
+   "id": "p5",
+   "tipo": "puerta",
+   "u": "Z5",
+   "v": "C3",
+   "longitud_m": 3
+  },
+  {
+   "id": "p6",
+   "tipo": "puerta",
+   "u": "Z6",
+   "v": "C4",
+   "longitud_m": 3
+  },
+  {
+   "id": "p7",
+   "tipo": "puerta",
+   "u": "Z7",
+   "v": "C5",
+   "longitud_m": 4
+  },
+  {
+   "id": "p8",
+   "tipo": "puerta",
+   "u": "Z8",
+   "v": "C4",
+   "longitud_m": 3
+  }
+ ],
+ "sensores": [
+  {
+   "id": "PIR1",
+   "zona": "Z7",
+   "gpio": 34
+  },
+  {
+   "id": "PIR2",
+   "zona": "Z1",
+   "gpio": 35
+  }
+ ],
+ "controles": [
+  {
+   "id": "B0",
+   "funcion": "alarma",
+   "gpio": 4
+  },
+  {
+   "id": "B7",
+   "funcion": "reinicio",
+   "gpio": 14
+  }
+ ],
+ "salidas_esp32": {
+  "tira_led": 16,
+  "buzzer": 23,
+  "led_estado": 2
+ }
+}

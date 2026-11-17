@@ -1,0 +1,642 @@
+{
+ "version": 1,
+ "author": "Grupo 2 - Modelos y Simulacion",
+ "editor": "wokwi",
+ "parts": [
+  {
+   "type": "board-esp32-devkit-c-v4",
+   "id": "esp",
+   "left": 40,
+   "top": 737,
+   "attrs": {}
+  },
+  {
+   "type": "wokwi-led-strip",
+   "id": "tira_e1",
+   "left": 84.0,
+   "top": 382.7,
+   "rotate": 0.0,
+   "attrs": {
+    "pixels": "8"
+   }
+  },
+  {
+   "type": "wokwi-text",
+   "id": "t_e1",
+   "left": 154.0,
+   "top": 355.2,
+   "attrs": {
+    "text": "e1 · B5"
+   }
+  },
+  {
+   "type": "wokwi-led-strip",
+   "id": "tira_e2",
+   "left": 268.0,
+   "top": 382.7,
+   "rotate": 0.0,
+   "attrs": {
+    "pixels": "12"
+   }
+  },
+  {
+   "type": "wokwi-text",
+   "id": "t_e2",
+   "left": 384.0,
+   "top": 355.2,
+   "attrs": {
+    "text": "e2 · B1"
+   }
+  },
+  {
+   "type": "wokwi-led-strip",
+   "id": "tira_e3",
+   "left": 544.0,
+   "top": 382.7,
+   "rotate": 0.0,
+   "attrs": {
+    "pixels": "12"
+   }
+  },
+  {
+   "type": "wokwi-text",
+   "id": "t_e3",
+   "left": 660.0,
+   "top": 355.2,
+   "attrs": {
+    "text": "e3 · B2"
+   }
+  },
+  {
+   "type": "wokwi-led-strip",
+   "id": "tira_e4",
+   "left": 820.0,
+   "top": 382.7,
+   "rotate": 0.0,
+   "attrs": {
+    "pixels": "12"
+   }
+  },
+  {
+   "type": "wokwi-text",
+   "id": "t_e4",
+   "left": 936.0,
+   "top": 355.2,
+   "attrs": {
+    "text": "e4 · B3"
+   }
+  },
+  {
+   "type": "wokwi-led-strip",
+   "id": "tira_e5",
+   "left": 1096.0,
+   "top": 382.7,
+   "rotate": 0.0,
+   "attrs": {
+    "pixels": "8"
+   }
+  },
+  {
+   "type": "wokwi-text",
+   "id": "t_e5",
+   "left": 1166.0,
+   "top": 355.2,
+   "attrs": {
+    "text": "e5 · B6"
+   }
+  },
+  {
+   "type": "wokwi-led-strip",
+   "id": "tira_e6",
+   "left": 452.0,
+   "top": 270.0,
+   "rotate": -78.47,
+   "attrs": {
+    "pixels": "10"
+   }
+  },
+  {
+   "type": "wokwi-text",
+   "id": "t_e6",
+   "left": 585.0,
+   "top": 277.5,
+   "attrs": {
+    "text": "e6 · B4"
+   }
+  },
+  {
+   "type": "wokwi-led-strip",
+   "id": "tira_e7",
+   "left": 452.0,
+   "top": 157.3,
+   "rotate": 180.0,
+   "attrs": {
+    "pixels": "6"
+   }
+  },
+  {
+   "type": "wokwi-text",
+   "id": "t_e7",
+   "left": 499.0,
+   "top": 129.8,
+   "attrs": {
+    "text": "e7 · B8"
+   }
+  },
+  {
+   "type": "wokwi-led-strip",
+   "id": "tira_e8",
+   "left": 544.0,
+   "top": 270.0,
+   "rotate": 44.42,
+   "attrs": {
+    "pixels": "14"
+   }
+  },
+  {
+   "type": "wokwi-text",
+   "id": "t_e8",
+   "left": 723.0,
+   "top": 277.5,
+   "attrs": {
+    "text": "e8 · B9"
+   }
+  },
+  {
+   "type": "wokwi-text",
+   "id": "t_S1",
+   "left": 62,
+   "top": 428.2,
+   "attrs": {
+    "text": "SALIDA S1"
+   }
+  },
+  {
+   "type": "wokwi-text",
+   "id": "t_S2",
+   "left": 430,
+   "top": 202.8,
+   "attrs": {
+    "text": "SALIDA S2"
+   }
+  },
+  {
+   "type": "wokwi-text",
+   "id": "t_S3",
+   "left": 1258,
+   "top": 428.2,
+   "attrs": {
+    "text": "SALIDA S3"
+   }
+  },
+  {
+   "type": "wokwi-text",
+   "id": "t_Z1",
+   "left": 204.6,
+   "top": 490.4,
+   "attrs": {
+    "text": "Z1 Aula A"
+   }
+  },
+  {
+   "type": "wokwi-text",
+   "id": "t_Z2",
+   "left": 287.4,
+   "top": 490.4,
+   "attrs": {
+    "text": "Z2 Aula B"
+   }
+  },
+  {
+   "type": "wokwi-text",
+   "id": "t_Z3",
+   "left": 522,
+   "top": 504.2,
+   "attrs": {
+    "text": "Z3 Laboratorio"
+   }
+  },
+  {
+   "type": "wokwi-text",
+   "id": "t_Z4",
+   "left": 756.6,
+   "top": 490.4,
+   "attrs": {
+    "text": "Z4 Oficina"
+   }
+  },
+  {
+   "type": "wokwi-text",
+   "id": "t_Z5",
+   "left": 839.4,
+   "top": 490.4,
+   "attrs": {
+    "text": "Z5 Baños"
+   }
+  },
+  {
+   "type": "wokwi-text",
+   "id": "t_Z6",
+   "left": 1032.6,
+   "top": 490.4,
+   "attrs": {
+    "text": "Z6 Bodega"
+   }
+  },
+  {
+   "type": "wokwi-text",
+   "id": "t_Z7",
+   "left": 623.2,
+   "top": 51.2,
+   "attrs": {
+    "text": "Z7 Auditorio"
+   }
+  },
+  {
+   "type": "wokwi-text",
+   "id": "t_Z8",
+   "left": 1115.4,
+   "top": 490.4,
+   "attrs": {
+    "text": "Z8 Recepción"
+   }
+  },
+  {
+   "type": "wokwi-pir-motion-sensor",
+   "id": "pir1",
+   "left": 733.2,
+   "top": 21.200000000000003,
+   "attrs": {
+    "delayTime": "6"
+   }
+  },
+  {
+   "type": "wokwi-pir-motion-sensor",
+   "id": "pir2",
+   "left": 74.6,
+   "top": 495.4,
+   "attrs": {
+    "delayTime": "6"
+   }
+  },
+  {
+   "type": "wokwi-pushbutton",
+   "id": "b0",
+   "left": 330,
+   "top": 777,
+   "attrs": {
+    "color": "red",
+    "key": "0",
+    "label": "B0 Alarma"
+   }
+  },
+  {
+   "type": "wokwi-pushbutton",
+   "id": "b1",
+   "left": 455,
+   "top": 777,
+   "attrs": {
+    "color": "yellow",
+    "key": "1",
+    "label": "B1 e2"
+   }
+  },
+  {
+   "type": "wokwi-pushbutton",
+   "id": "b2",
+   "left": 580,
+   "top": 777,
+   "attrs": {
+    "color": "yellow",
+    "key": "2",
+    "label": "B2 e3"
+   }
+  },
+  {
+   "type": "wokwi-pushbutton",
+   "id": "b3",
+   "left": 705,
+   "top": 777,
+   "attrs": {
+    "color": "yellow",
+    "key": "3",
+    "label": "B3 e4"
+   }
+  },
+  {
+   "type": "wokwi-pushbutton",
+   "id": "b4",
+   "left": 830,
+   "top": 777,
+   "attrs": {
+    "color": "yellow",
+    "key": "4",
+    "label": "B4 e6"
+   }
+  },
+  {
+   "type": "wokwi-pushbutton",
+   "id": "b5",
+   "left": 955,
+   "top": 777,
+   "attrs": {
+    "color": "yellow",
+    "key": "5",
+    "label": "B5 e1"
+   }
+  },
+  {
+   "type": "wokwi-pushbutton",
+   "id": "b6",
+   "left": 1080,
+   "top": 777,
+   "attrs": {
+    "color": "yellow",
+    "key": "6",
+    "label": "B6 e5"
+   }
+  },
+  {
+   "type": "wokwi-pushbutton",
+   "id": "b7",
+   "left": 1205,
+   "top": 777,
+   "attrs": {
+    "color": "blue",
+    "key": "7",
+    "label": "B7 Reinicio"
+   }
+  },
+  {
+   "type": "wokwi-pushbutton",
+   "id": "b8",
+   "left": 1330,
+   "top": 777,
+   "attrs": {
+    "color": "yellow",
+    "key": "8",
+    "label": "B8 e7"
+   }
+  },
+  {
+   "type": "wokwi-pushbutton",
+   "id": "b9",
+   "left": 1455,
+   "top": 777,
+   "attrs": {
+    "color": "yellow",
+    "key": "9",
+    "label": "B9 e8"
+   }
+  },
+  {
+   "type": "wokwi-buzzer",
+   "id": "bz1",
+   "left": 200,
+   "top": 727,
+   "attrs": {
+    "volume": "0.1"
+   }
+  },
+  {
+   "type": "wokwi-text",
+   "id": "t_titulo",
+   "left": 40,
+   "top": 10,
+   "attrs": {
+    "text": "Grupo 2 · Edificio inteligente con rutas dinamicas de evacuacion\nTeclas 0-9 = pulsadores B0-B9 (0 alarma, 7 reinicio). Clic en un PIR -> Simulate motion."
+   }
+  }
+ ],
+ "connections": [
+  [
+   "esp:TX",
+   "$serialMonitor:RX",
+   "",
+   []
+  ],
+  [
+   "esp:RX",
+   "$serialMonitor:TX",
+   "",
+   []
+  ],
+  [
+   "esp:16",
+   "tira_e1:DIN",
+   "green",
+   []
+  ],
+  [
+   "tira_e1:DOUT",
+   "tira_e2:DIN",
+   "green",
+   []
+  ],
+  [
+   "tira_e2:DOUT",
+   "tira_e3:DIN",
+   "green",
+   []
+  ],
+  [
+   "tira_e3:DOUT",
+   "tira_e4:DIN",
+   "green",
+   []
+  ],
+  [
+   "tira_e4:DOUT",
+   "tira_e5:DIN",
+   "green",
+   []
+  ],
+  [
+   "tira_e5:DOUT",
+   "tira_e6:DIN",
+   "green",
+   []
+  ],
+  [
+   "tira_e6:DOUT",
+   "tira_e7:DIN",
+   "green",
+   []
+  ],
+  [
+   "tira_e7:DOUT",
+   "tira_e8:DIN",
+   "green",
+   []
+  ],
+  [
+   "pir1:VCC",
+   "esp:5V",
+   "red",
+   []
+  ],
+  [
+   "pir1:GND",
+   "esp:GND.2",
+   "black",
+   []
+  ],
+  [
+   "pir1:OUT",
+   "esp:34",
+   "purple",
+   []
+  ],
+  [
+   "pir2:VCC",
+   "esp:5V",
+   "red",
+   []
+  ],
+  [
+   "pir2:GND",
+   "esp:GND.2",
+   "black",
+   []
+  ],
+  [
+   "pir2:OUT",
+   "esp:35",
+   "purple",
+   []
+  ],
+  [
+   "b0:1.l",
+   "esp:4",
+   "red",
+   []
+  ],
+  [
+   "b0:2.r",
+   "esp:GND.1",
+   "black",
+   []
+  ],
+  [
+   "b1:1.l",
+   "esp:25",
+   "orange",
+   []
+  ],
+  [
+   "b1:2.r",
+   "esp:GND.1",
+   "black",
+   []
+  ],
+  [
+   "b2:1.l",
+   "esp:26",
+   "orange",
+   []
+  ],
+  [
+   "b2:2.r",
+   "esp:GND.1",
+   "black",
+   []
+  ],
+  [
+   "b3:1.l",
+   "esp:27",
+   "orange",
+   []
+  ],
+  [
+   "b3:2.r",
+   "esp:GND.1",
+   "black",
+   []
+  ],
+  [
+   "b4:1.l",
+   "esp:32",
+   "orange",
+   []
+  ],
+  [
+   "b4:2.r",
+   "esp:GND.1",
+   "black",
+   []
+  ],
+  [
+   "b5:1.l",
+   "esp:33",
+   "orange",
+   []
+  ],
+  [
+   "b5:2.r",
+   "esp:GND.1",
+   "black",
+   []
+  ],
+  [
+   "b6:1.l",
+   "esp:13",
+   "orange",
+   []
+  ],
+  [
+   "b6:2.r",
+   "esp:GND.1",
+   "black",
+   []
+  ],
+  [
+   "b7:1.l",
+   "esp:14",
+   "blue",
+   []
+  ],
+  [
+   "b7:2.r",
+   "esp:GND.1",
+   "black",
+   []
+  ],
+  [
+   "b8:1.l",
+   "esp:18",
+   "orange",
+   []
+  ],
+  [
+   "b8:2.r",
+   "esp:GND.1",
+   "black",
+   []
+  ],
+  [
+   "b9:1.l",
+   "esp:19",
+   "orange",
+   []
+  ],
+  [
+   "b9:2.r",
+   "esp:GND.1",
+   "black",
+   []
+  ],
+  [
+   "bz1:1",
+   "esp:GND.3",
+   "black",
+   []
+  ],
+  [
+   "bz1:2",
+   "esp:23",
+   "gray",
+   []
+  ]
+ ],
+ "dependencies": {}
+}

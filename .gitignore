@@ -9,3 +9,8 @@ secrets.h
 build/
 .vscode/
 .idea/
+
+# La base de trabajo no se versiona; para el RAR final se copia a mano con los datos de las pruebas.
+# Archivos temporales de las pruebas en PC
+*.o
+*.exe

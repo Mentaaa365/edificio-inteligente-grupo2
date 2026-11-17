@@ -1,5 +1,7 @@
 # Entorno en Windows y repositorio privado
 
+> **Orden de trabajo.** Primero todo funciona en simulación (ver [Fase 1](Fase_1.md)). Para eso solo hace falta la sección 1 (Python). La sección 2 (Arduino IDE y placa) se usa al empezar la Fase 2.
+
 ## 1. Python 3.13 y entorno virtual
 
 1. Instala [Python para Windows](https://www.python.org/downloads/windows/) y selecciona una versión de la serie **3.13**.
@@ -10,6 +12,7 @@
    py -3.13 -m venv .venv
    .\.venv\Scripts\python.exe -c "import sys; print(sys.version); print('Entorno virtual activo:', sys.prefix != sys.base_prefix)"
    .\.venv\Scripts\python.exe -m pip --version
+   .\.venv\Scripts\python.exe -m pip install -r simulacion\requirements.txt
    ```
 
 3. Comprueba que sale `Entorno virtual activo: True` y que `pip` apunta a `.venv`. En PyCharm puedes seleccionar `.venv\Scripts\python.exe` como intérprete del proyecto.

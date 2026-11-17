@@ -1,0 +1,9 @@
+escenario,descripcion,estado,zonas_aisladas,longitud_media_m,longitud_max_m,t_evac_max_s,costo_medio_m
+S0,Sin bloqueos,RUTA_ACTIVA,0,14.88,23.0,19.2,14.88
+S1,Pasillo norte e6 bloqueado,RUTA_ACTIVA,0,15.38,23.0,19.2,16.94
+S2,Salida S2 bloqueada (e7),RUTA_ACTIVA,0,18.38,34.0,28.3,19.25
+S3,Bloqueos múltiples e2 + e4,RUTA_ACTIVA,0,14.88,23.0,19.2,20.56
+S4,Salida S1 bloqueada (e1),RUTA_ACTIVA,0,19.88,31.0,25.8,21.75
+S5,Zona aislada: e2 + e3 + e6,RUTA_PARCIAL,1,14.29,23.0,19.2,18.71
+S6,Sin ruta: e1 + e5 + e7,SIN_RUTA,8,,,,
+S7,Congestión: Auditorio ocupado (PIR1),RUTA_ACTIVA,0,15.38,23.0,19.2,15.75
