@@ -1,0 +1,133 @@
+{% load static %}<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evacuación · Grupo 2</title>
+  <link rel="stylesheet" href="{% static 'rutas/dashboard.css' %}">
+  <!-- Chart.js con versión fijada (https://www.chartjs.org/docs/latest/getting-started/installation.html) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Edificio inteligente · rutas dinámicas de evacuación</h1>
+    <p class="sub">Grupo 2 · Modelos y Simulación · UNEMI · Fase 3</p>
+  </div>
+  <div id="conexion" class="chip gris" title="Cómo llegan los datos al navegador">Conectando…</div>
+</header>
+
+<main>
+  <!-- ======================= estado actual ======================= -->
+  <section class="tarjeta" id="sec-estado">
+    <h2>Estado actual</h2>
+    <div class="estado-grande" id="estado-texto">Sin datos</div>
+    <dl class="datos">
+      <dt>Último evento</dt><dd id="dato-evento">—</dd>
+      <dt>Recibido</dt><dd id="dato-hora">—</dd>
+      <dt>Bloqueos</dt><dd id="dato-bloqueos">—</dd>
+      <dt>Zonas ocupadas</dt><dd id="dato-ocupadas">—</dd>
+      <dt>Cálculo ESP32 / servidor</dt><dd id="dato-calculo">—</dd>
+      <dt>ESP32 = modelo</dt><dd id="dato-coincide">—</dd>
+    </dl>
+    <h3>Alertas</h3>
+    <ul id="alertas" class="alertas"><li class="vacio">Sin alertas</li></ul>
+  </section>
+
+  <!-- ======================= plano ======================= -->
+  <section class="tarjeta ancho" id="sec-plano">
+    <h2>Plano en vivo <small id="plano-origen"></small></h2>
+    <svg id="plano" class="plano" role="img" aria-label="Plano del edificio con las rutas de evacuación"></svg>
+    <ul class="leyenda">
+      <li><span class="muestra verde"></span>Ruta de evacuación</li>
+      <li><span class="muestra rojo"></span>Bloqueado</li>
+      <li><span class="muestra ambar"></span>Aislado</li>
+      <li><span class="muestra morado"></span>Zona ocupada</li>
+      <li><span class="muestra gris"></span>Sin uso</li>
+    </ul>
+    <table class="tabla" id="tabla-rutas">
+      <thead><tr><th>Zona</th><th>Ruta</th><th>Costo</th><th>Recorrido</th><th>Tiempo</th><th>Salida</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <!-- ======================= escenarios ======================= -->
+  <section class="tarjeta" id="sec-escenarios">
+    <h2>Escenarios</h2>
+    <p class="nota">«Ejecutar» calcula la ruta en el servidor y deja el escenario pendiente
+      para que el ESP32 lo recoja en <code>GET /api/comandos/</code>.</p>
+    <table class="tabla" id="tabla-escenarios">
+      <thead><tr><th>Nombre</th><th>Condición</th><th>Envío</th><th></th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <!-- ======================= gráficas ======================= -->
+  <section class="tarjeta ancho" id="sec-graficas">
+    <h2>Gráficas <small>(últimos 50 eventos)</small></h2>
+    <div class="graficas">
+      <div><canvas id="graf-calculo"></canvas></div>
+      <div><canvas id="graf-recorrido"></canvas></div>
+      <div><canvas id="graf-aisladas"></canvas></div>
+    </div>
+  </section>
+
+  <!-- ======================= simulador ======================= -->
+  <section class="tarjeta ancho" id="sec-simulador">
+    <h2>Simulador</h2>
+    <p class="nota">Elige bloqueos, zonas ocupadas, α y β. El servidor calcula con
+      <code>simulacion/modelo.py</code> y no guarda nada.</p>
+    <div class="simulador">
+      <form id="form-simulador">
+        <fieldset><legend>Pasillos bloqueados</legend><div id="sim-bloqueos" class="casillas"></div></fieldset>
+        <fieldset><legend>Zonas ocupadas</legend><div id="sim-ocupadas" class="casillas"></div></fieldset>
+        <fieldset><legend>Parámetros</legend>
+          <label>α (congestión) <output id="sim-alfa-valor">0,50</output>
+            <input type="range" id="sim-alfa" min="0" max="200" step="5" value="50"></label>
+          <label>β (riesgo) <output id="sim-beta-valor">1,00</output>
+            <input type="range" id="sim-beta" min="0" max="200" step="5" value="100"></label>
+        </fieldset>
+        <button type="button" id="sim-reiniciar">Valores de grafo.json</button>
+      </form>
+      <div>
+        <div class="estado-mediano" id="sim-estado">—</div>
+        <svg id="plano-sim" class="plano" role="img" aria-label="Plano del simulador"></svg>
+        <table class="tabla" id="tabla-sim">
+          <thead><tr><th>Zona</th><th>Ruta</th><th>Costo</th><th>Recorrido</th><th>Tiempo</th><th>Salida</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= histórico ======================= -->
+  <section class="tarjeta ancho" id="sec-historico">
+    <h2>Histórico</h2>
+    <form id="form-historico" class="filtros">
+      <label>Desde <input type="date" name="desde"></label>
+      <label>Hasta <input type="date" name="hasta"></label>
+      <label>Estado
+        <select name="estado">
+          <option value="">Todos</option>
+          <option>NORMAL</option><option>RUTA_ACTIVA</option><option>RUTA_PARCIAL</option>
+          <option>SIN_RUTA</option><option>INICIALIZANDO</option>
+        </select></label>
+      <label>Evento <input name="evento" placeholder="B0, B4, PIR1…" size="8"></label>
+      <label>¿Coincide?
+        <select name="coincide"><option value="">Todos</option><option value="si">Sí</option><option value="no">No</option></select></label>
+      <label>Límite <input type="number" name="limite" value="50" min="1" max="1000"></label>
+      <button type="submit">Filtrar</button>
+    </form>
+    <p class="nota" id="historico-total"></p>
+    <div class="desplazable">
+      <table class="tabla" id="tabla-historico">
+        <thead><tr><th>#</th><th>Recibido</th><th>Origen</th><th>Evento</th><th>Estado</th><th>Bloqueos</th><th>Ocupadas</th><th>Aisladas</th><th>Cálculo ESP32</th><th>Coincide</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script src="{% static 'rutas/dashboard.js' %}"></script>
+</body>
+</html>
