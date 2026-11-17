@@ -11,7 +11,7 @@ Ante una zona bloqueada o una emergencia simulada, el sistema calcula la ruta se
 | 0. Arranque | Cerrada | [Fase 0](docs/Fase_0.md) |
 | 1. Modelo y simulación previa | Modelo, simulación y [proyecto Wokwi](https://wokwi.com/projects/480903247493856257) hechos y probados. Faltan las capturas de evidencia y el estudio del código por el grupo | [Fase 1](docs/Fase_1.md) |
 | 2. Hardware incremental | Pendiente | |
-| 3. Servidor y dashboard | Pendiente | |
+| 3. Servidor y dashboard | Servidor Django, API, dashboard en tiempo real, ESP32 simulado, puente USB para la maqueta y 49 pruebas hechos. Falta probarlo en el equipo de cada integrante y con la placa | [Fase 3](docs/Fase_3.md) |
 | 4. Integración y pruebas | Pendiente | |
 | 5. Cierre | Pendiente | |
 
@@ -21,6 +21,7 @@ Ante una zona bloqueada o una emergencia simulada, el sistema calcula la ruta se
 |---|---|
 | [`modelo/grafo.json`](modelo/grafo.json) | Grafo del edificio: nodos, pasillos, LED, pulsadores y pines. Fuente única del proyecto. |
 | [`simulacion/`](simulacion) | Modelo en Python con NetworkX, escenarios, ajuste de curvas y resultados. |
+| [`backend/`](backend) | Servidor Django y dashboard (Fase 3). Pasos en [`backend/README.md`](backend/README.md). |
 | [`firmware/evacuacion_esp32/`](firmware/evacuacion_esp32) | Sketch del ESP32 y archivos del proyecto Wokwi. |
 | [`firmware/verificacion_esp32/`](firmware/verificacion_esp32) | Prueba mínima de la placa por USB para el inicio de la Fase 2. |
 | [`herramientas/`](herramientas) | Generadores de `grafo.h` y `diagram.json` a partir de `grafo.json`. |
