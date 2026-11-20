@@ -133,7 +133,16 @@ function dibujarPlano(elemento, resultado) {
         (d ? (d.salida ? ` → ${d.salida}, ${fmt(d.longitud_m, 0)} m` : " · aislada") : "")));
       elemento.appendChild(c);
       elemento.appendChild(svg("text", { x, y, class: "etq-nodo" }, n.id));
-      elemento.appendChild(svg("text", { x, y: y + (n.y_m > 20 ? -1.7 : 2.0), class: "etq-nombre" }, n.nombre));
+      // El nombre va del lado contrario a la intersección de su puerta, para no tapar los pasillos.
+      const puerta = GRAFO.aristas.find((a) => a.tipo === "puerta" && a.u === n.id);
+      const cruce = puerta ? nodo[puerta.v] : n;
+      const dx = n.x_m - cruce.x_m, dy = n.y_m - cruce.y_m;
+      if (Math.abs(dx) > Math.abs(dy)) {
+        elemento.appendChild(svg("text", { x: x + (dx > 0 ? 1.5 : -1.5), y: y + 0.4, class: "etq-nombre",
+          style: `text-anchor:${dx > 0 ? "start" : "end"}` }, n.nombre));
+      } else {
+        elemento.appendChild(svg("text", { x, y: y + (dy > 0 ? -1.7 : 2.0), class: "etq-nombre" }, n.nombre));
+      }
     }
   }
 }

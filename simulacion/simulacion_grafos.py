@@ -52,7 +52,7 @@ def r2(y, y_est) -> float:
 def escenarios(ed: m.Edificio):
     v = ed.parametros["velocidad_m_s"]
     filas, resumen = [], []
-    fig, ejes = plt.subplots(4, 2, figsize=(15, 15.5), dpi=130)
+    fig, ejes = plt.subplots(4, 2, figsize=(12, 24), dpi=120)
     for (cod, desc, bloq, ocup), ax in zip(ESCENARIOS, ejes.flat):
         campo = m.calcular_campo(ed, bloq, ocup)
         assert campo.dist == m.distancias_nx(ed, campo.peso), f"{cod}: no coincide con NetworkX"
