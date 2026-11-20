@@ -17,6 +17,7 @@ MARGEN, ALTO_TIRA = 8, 35                 # la tira mide 23·n + 16 px de ancho 
 ALTO = g["maqueta"]["alto_m"]
 pos = {n["id"]: (n["x_m"], n["y_m"]) for n in g["nodos"]}
 nombre = {n["id"]: n["nombre"] for n in g["nodos"]}
+interseccion = {a["u"]: a["v"] for a in g["aristas"] if a["tipo"] == "puerta"}   # zona -> intersección
 
 
 def px(x, y):
@@ -24,7 +25,8 @@ def px(x, y):
 
 
 partes, cables = [], []
-Y_PANEL = round((ALTO - 6) * PX)          # fila de pulsadores, debajo del plano
+Y_MIN = min(y for _, y in pos.values())
+Y_PANEL = round((ALTO - Y_MIN + 6) * PX)  # fila de pulsadores, 6 m por debajo del nodo más bajo del plano
 
 partes.append({"type": "board-esp32-devkit-c-v4", "id": "esp", "left": 40, "top": Y_PANEL + 130, "attrs": {}})
 cables += [["esp:TX", "$serialMonitor:RX", "", []], ["esp:RX", "$serialMonitor:TX", "", []]]
@@ -58,16 +60,24 @@ for n in g["nodos"]:
         partes.append({"type": "wokwi-text", "id": f"t_{n['id']}", "left": x - 30, "top": y + 28,
                        "attrs": {"text": f"SALIDA {n['id']}"}})
     elif n["tipo"] == "zona":
-        arriba = n["y_m"] > 20
-        partes.append({"type": "wokwi-text", "id": f"t_{n['id']}", "left": x - 30, "top": y - 50 if arriba else y + 35,
+        cx, cy = pos[interseccion[n["id"]]]
+        if abs(n["x_m"] - cx) > abs(n["y_m"] - cy):   # zona a un lado de su intersección: rótulo a ese lado
+            izq, arr = (x - 110 if n["x_m"] < cx else x + 30), y - 10
+        else:                                           # zona arriba o abajo: rótulo encima o debajo
+            izq, arr = x - 30 + (-40 if n["x_m"] < cx else 20), (y - 50 if n["y_m"] > cy else y + 35)
+        partes.append({"type": "wokwi-text", "id": f"t_{n['id']}", "left": round(izq, 1), "top": round(arr, 1),
                        "attrs": {"text": f"{n['id']} {n['nombre']}"}})
 
 # ---- Sensores PIR (clic sobre el sensor durante la simulación -> "Simulate motion")
 for s in g["sensores"]:
     x, y = px(*pos[s["zona"]])
-    arriba = pos[s["zona"]][1] > 20
-    partes.append({"type": "wokwi-pir-motion-sensor", "id": s["id"].lower(), "left": x + 80 if arriba else x - 160,
-                   "top": y - 80 if arriba else y + 40, "attrs": {"delayTime": "6"}})
+    (zx, zy), (cx, cy) = pos[s["zona"]], pos[interseccion[s["zona"]]]
+    if abs(zx - cx) > abs(zy - cy):   # zona a un lado de su intersección: el sensor va más hacia ese lado
+        izq, arr = (x - 230, y - 50) if zx < cx else (x + 120, y - 50)
+    else:                             # zona arriba o abajo: el sensor va por encima o por debajo del rótulo
+        izq, arr = x - 40 + (-60 if zx < cx else 60), (y - 130 if zy > cy else y + 50)
+    partes.append({"type": "wokwi-pir-motion-sensor", "id": s["id"].lower(), "left": round(izq, 1),
+                   "top": round(arr, 1), "attrs": {"delayTime": "6"}})
     cables += [[f"{s['id'].lower()}:VCC", "esp:5V", "red", []],
                [f"{s['id'].lower()}:GND", "esp:GND.2", "black", []],
                [f"{s['id'].lower()}:OUT", f"esp:{s['gpio']}", "purple", []]]

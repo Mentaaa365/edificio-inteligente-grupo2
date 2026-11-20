@@ -1,17 +1,17 @@
 {
  "descripcion": "Grafo del edificio del Grupo 2. Fuente única de verdad: de este archivo se generan firmware/evacuacion_esp32/grafo.h y el diagrama de Wokwi.",
  "unidades": {
-  "coordenadas": "metros del modelo (1 m = 1 LED = 1,667 cm de maqueta)",
+  "coordenadas": "metros del modelo medidos desde la esquina inferior izquierda de la base (1 m = 1 LED = 1,667 cm de maqueta)",
   "longitud": "metros",
   "costo_entero": "diezmilésimas de metro (0,0001 m)"
  },
  "maqueta": {
-  "ancho_m": 60,
-  "alto_m": 32.4,
+  "ancho_m": 36,
+  "alto_m": 36,
   "cm_por_m": 1.6667,
   "base_cm": [
-   100,
-   54
+   60,
+   60
   ]
  },
  "parametros": {
@@ -27,112 +27,112 @@
    "tipo": "salida",
    "nombre": "Salida oeste",
    "x_m": 4,
-   "y_m": 15.0
+   "y_m": 9.4
   },
   {
    "id": "S2",
    "tipo": "salida",
    "nombre": "Salida norte",
-   "x_m": 20,
-   "y_m": 24.798
+   "x_m": 8,
+   "y_m": 31.198
   },
   {
    "id": "S3",
    "tipo": "salida",
    "nombre": "Salida este",
-   "x_m": 56,
-   "y_m": 15.0
+   "x_m": 32,
+   "y_m": 9.4
   },
   {
    "id": "C1",
    "tipo": "interseccion",
    "nombre": "",
    "x_m": 12,
-   "y_m": 15.0
+   "y_m": 9.4
   },
   {
    "id": "C2",
    "tipo": "interseccion",
    "nombre": "",
-   "x_m": 24,
-   "y_m": 15.0
+   "x_m": 12,
+   "y_m": 21.4
   },
   {
    "id": "C3",
    "tipo": "interseccion",
    "nombre": "",
-   "x_m": 36,
-   "y_m": 15.0
+   "x_m": 24,
+   "y_m": 21.4
   },
   {
    "id": "C4",
    "tipo": "interseccion",
    "nombre": "",
-   "x_m": 48,
-   "y_m": 15.0
+   "x_m": 24,
+   "y_m": 9.4
   },
   {
    "id": "C5",
    "tipo": "interseccion",
    "nombre": "",
-   "x_m": 26,
-   "y_m": 24.798
+   "x_m": 14,
+   "y_m": 31.198
   },
   {
    "id": "Z1",
    "tipo": "zona",
    "nombre": "Aula A",
    "x_m": 10.2,
-   "y_m": 12.6
+   "y_m": 11.8
   },
   {
    "id": "Z2",
    "tipo": "zona",
    "nombre": "Aula B",
-   "x_m": 13.8,
-   "y_m": 12.6
+   "x_m": 10.2,
+   "y_m": 7.0
   },
   {
    "id": "Z3",
    "tipo": "zona",
    "nombre": "Laboratorio",
-   "x_m": 24,
-   "y_m": 12.0
+   "x_m": 13.8,
+   "y_m": 19.0
   },
   {
    "id": "Z4",
    "tipo": "zona",
    "nombre": "Oficina",
-   "x_m": 34.2,
-   "y_m": 12.6
+   "x_m": 22.2,
+   "y_m": 19.0
   },
   {
    "id": "Z5",
    "tipo": "zona",
    "nombre": "Baños",
-   "x_m": 37.8,
-   "y_m": 12.6
+   "x_m": 25.8,
+   "y_m": 19.0
   },
   {
    "id": "Z6",
    "tipo": "zona",
    "nombre": "Bodega",
-   "x_m": 46.2,
-   "y_m": 12.6
+   "x_m": 25.8,
+   "y_m": 11.8
   },
   {
    "id": "Z7",
    "tipo": "zona",
    "nombre": "Auditorio",
-   "x_m": 28.4,
-   "y_m": 27.998
+   "x_m": 17.6,
+   "y_m": 29.454
   },
   {
    "id": "Z8",
    "tipo": "zona",
    "nombre": "Recepción",
-   "x_m": 49.8,
-   "y_m": 12.6
+   "x_m": 25.8,
+   "y_m": 7.0
   }
  ],
  "aristas": [
