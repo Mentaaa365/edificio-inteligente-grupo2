@@ -2,12 +2,13 @@
 #pragma once
 
 // 1 = simulación en Wokwi (buzzer pasivo con tone(), PIR listo en 3 s)
-// 0 = maqueta real (buzzer activo con HIGH/LOW, PIR HC-SR501 listo tras 60 s)
+// 0 = maqueta real (zumbador activo TMB12A05 con transistor NPN: HIGH = suena; PIR HC-SR501 listo tras 60 s)
 #define SIMULACION 1
 
 // ---- Pines (ESP32 DevKit). Se evitan los pines de arranque 0, 2, 5, 12 y 15 para entradas.
-#define PIN_TIRA    16
-#define PIN_BUZZER  23
+// En la placa de 30 pines con CH340 los GPIO llevan los mismos números (el 16 está rotulado RX2).
+#define PIN_TIRA    16     // -> 74AHCT125 (pata 2) -> 330 ohm -> DIN de la tira
+#define PIN_BUZZER  23     // -> 1 kohm -> base del transistor NPN que enciende el zumbador
 #define PIN_LED     2      // LED integrado de la placa
 
 // Pulsadores: un lado al GPIO y el otro a GND, con INPUT_PULLUP (pulsado = LOW)

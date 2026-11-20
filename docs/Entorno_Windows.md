@@ -28,7 +28,8 @@
 
 3. En el **Gestor de tarjetas**, busca **esp32 by Espressif Systems** e instala una versión estable de la serie **3.3.x**. Anota la versión exacta para que los tres usen la misma.
 4. Abre `firmware/verificacion_esp32/verificacion_esp32.ino`, selecciona **ESP32 Dev Module** para el ESP32 clásico del pedido y pulsa **Verificar**. Guarda la salida de compilación como evidencia.
-5. Cuando reciban la placa, conéctala con su cable USB de datos, elige el puerto COM que aparece, pulsa **Subir** y abre el **Monitor serie** a **115200 baudios**. Debe mostrarse `FASE 0 OK - ESP32` una vez por segundo.
+5. La placa del grupo (ESP32 WROOM de 30 pines, USB-C) usa el chip USB **CH340**. Si al conectarla no aparece un puerto **USB-SERIAL CH340 (COMx)** en el Administrador de dispositivos, instala el controlador oficial `CH341SER.EXE` de WCH siguiendo la [guía de SparkFun](https://learn.sparkfun.com/tutorials/how-to-install-ch340-drivers) y vuelve a conectar la placa. Si tampoco aparece, prueba otro cable: muchos cables USB-C solo cargan.
+6. Cuando reciban la placa, conéctala con su cable USB de datos, elige el puerto COM que aparece, pulsa **Subir** y abre el **Monitor serie** a **115200 baudios**. Debe mostrarse `FASE 0 OK - ESP32` una vez por segundo.
 
 ## 3. Trabajar con el repositorio privado
 

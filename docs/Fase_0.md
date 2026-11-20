@@ -3,11 +3,13 @@
 **Grupo 2 · Modelos y Simulación · UNEMI · Días 1 y 2**  
 **Cotización consultada el 13 de noviembre de 2026 · Fase cerrada el 16 de noviembre de 2026**
 
+> **Actualización del 20 de noviembre de 2026.** La maqueta se arma sobre un tablero MDF de **60 × 60 cm** y no sobre la base de 100 × 54 cm. Los pasillos, los LED y los pesos del modelo no cambian; solo se pliega el pasillo largo en forma de U. El replanteo, la compra real y el montaje están en la [Fase 2](Fase_2.md).
+
 ## Alcance propuesto para el arranque
 
 El prototipo representa una planta con ocho zonas, cinco intersecciones y tres salidas. En la demostración, el ESP32 usará los pulsadores para registrar bloqueos y los PIR para registrar presencia. Con esas entradas se recalculará la ruta del modelo y se encenderá el recorrido en la tira LED. El tablero web mostrará el estado del prototipo. La Fase 1 desarrollará el grafo, la simulación en Python y la prueba inicial en Wokwi.
 
-El [plano preliminar](Plano_Fase_0.png) conserva la topología y el mapeo de la sección D del plan. Se adopta una base de **100 × 54 cm** y una escala didáctica aproximada de **1:60**, porque una tira de 60 LED/m ocupa **1,67 cm por LED**. El pasillo horizontal usa 52 LED y requiere unos **86,7 cm**. En el modelo se conserva la equivalencia **1 LED = 1 m de peso base** para los pasillos. Los recintos del croquis indican ubicación y conexión. Para Fase 1 se propone asignar **4 m a la puerta del Auditorio**, según el escenario S0 del plan, y **3 m a cada puerta restante** como supuesto inicial.
+El [plano](Plano_Fase_0.png) conserva la topología y el mapeo de la sección D del plan. Se adopta una escala didáctica aproximada de **1:60**, porque una tira de 60 LED/m ocupa **1,67 cm por LED**. En el arranque se propuso una base de 100 × 54 cm para tender en línea recta los 52 LED de e1–e5 (86,7 cm); desde el 20 de noviembre la base es de **60 × 60 cm** y ese tramo se pliega (ver [Fase 2](Fase_2.md)). En el modelo se conserva la equivalencia **1 LED = 1 m de peso base** para los pasillos. Los recintos del croquis indican ubicación y conexión. Para Fase 1 se propone asignar **4 m a la puerta del Auditorio**, según el escenario S0 del plan, y **3 m a cada puerta restante** como supuesto inicial.
 
 | Pasillo | Extremos | Peso base | Índices LED | Control físico |
 |---|---|---:|---|---|
@@ -20,15 +22,17 @@ El [plano preliminar](Plano_Fase_0.png) conserva la topología y el mapeo de la 
 | e7 | C5–S2 | 6 m | 62–67 | B8 |
 | e8 | C5–C3 | 14 m | 68–81 | B9 |
 
-**Replanteo.** Mide desde la esquina inferior izquierda de la base. Los centros de S1, C1, C2, C3, C4 y S3 están a 25 cm del borde inferior, con posiciones horizontales de 6,67; 20; 40; 60; 80 y 93,33 cm, respectivamente. C5 y S2 están a 41,33 cm del borde inferior, con posiciones horizontales de 43,33 y 33,33 cm, respectivamente.
+**Replanteo.** Las medidas en la base de 60 × 60 cm están en [`Plano_montaje_60x60.png`](Plano_montaje_60x60.png) y en la [Fase 2](Fase_2.md).
 
 Para el corte, reserva una tira de 60 LED para e1–e5 (52 LED) y la otra para e6–e8 (30 LED). Quedan 38 LED de reserva.
 
 B0 inicia la emergencia y B7 restablece la maqueta. PIR1 va en Z7 (Auditorio) y PIR2 en Z1 (Aula A). Se añadieron los pulsadores **B8 (e7, salida S2)** y **B9 (e8)** en los GPIO 18 y 19, de modo que los ocho pasillos se pueden bloquear en la maqueta y no solo en la simulación. El primer LED de cada tramo está en el primer extremo indicado en la tabla.
 
-**Transporte.** La base de 100 × 54 cm es la mínima para tender 52 LED en línea (86,7 cm). Se construye en una sola pieza rígida de MDF de 3 mm o cartón pluma de 10 mm, con la electrónica fijada debajo o en un borde y los cables sujetos con bridas. Para llevarla al aula se protege la cara superior con una tapa de cartón del mismo tamaño separada por topes de 3 cm y se traslada en posición horizontal. La fuente, el cable USB y los repuestos van aparte.
+**Transporte.** La base es un tablero de MDF de 60 × 60 cm y 9 mm, con la electrónica en el borde inferior y los cables sujetos con bridas o cinta. Para llevarla al aula se protege la cara superior con una tapa de cartón del mismo tamaño separada por topes de 3 cm y se traslada en posición horizontal. La fuente, el cable USB y los repuestos van aparte.
 
 ## Lista de compras y presupuesto
+
+> Esta es la cotización del arranque. La compra real del grupo y los cambios respecto a esta lista están en la [Fase 2](Fase_2.md#1-materiales).
 
 Precios en USD. Los valores marcados como **estimado** sirven para reservar presupuesto. Confirmen las existencias, la ficha, el IVA y el envío antes de pagar.
 
