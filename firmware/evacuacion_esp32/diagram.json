@@ -7,14 +7,14 @@
    "type": "board-esp32-devkit-c-v4",
    "id": "esp",
    "left": 40,
-   "top": 935,
+   "top": 944,
    "attrs": {}
   },
   {
    "type": "wokwi-led-strip",
    "id": "tira_e1",
    "left": 84.0,
-   "top": 594.3,
+   "top": 603.5,
    "rotate": 0.0,
    "attrs": {
     "pixels": "8"
@@ -24,7 +24,7 @@
    "type": "wokwi-text",
    "id": "t_e1",
    "left": 154.0,
-   "top": 566.8,
+   "top": 576.0,
    "attrs": {
     "text": "e1 · B5"
    }
@@ -33,7 +33,7 @@
    "type": "wokwi-led-strip",
    "id": "tira_e2",
    "left": 130.0,
-   "top": 456.3,
+   "top": 465.5,
    "rotate": -90.0,
    "attrs": {
     "pixels": "12"
@@ -43,7 +43,7 @@
    "type": "wokwi-text",
    "id": "t_e2",
    "left": 286.0,
-   "top": 463.8,
+   "top": 473.0,
    "attrs": {
     "text": "e2 · B1"
    }
@@ -52,7 +52,7 @@
    "type": "wokwi-led-strip",
    "id": "tira_e3",
    "left": 268.0,
-   "top": 318.3,
+   "top": 327.5,
    "rotate": 0.0,
    "attrs": {
     "pixels": "12"
@@ -62,7 +62,7 @@
    "type": "wokwi-text",
    "id": "t_e3",
    "left": 384.0,
-   "top": 290.8,
+   "top": 367.0,
    "attrs": {
     "text": "e3 · B2"
    }
@@ -71,7 +71,7 @@
    "type": "wokwi-led-strip",
    "id": "tira_e4",
    "left": 406.0,
-   "top": 456.3,
+   "top": 465.5,
    "rotate": 90.0,
    "attrs": {
     "pixels": "12"
@@ -81,7 +81,7 @@
    "type": "wokwi-text",
    "id": "t_e4",
    "left": 562.0,
-   "top": 463.8,
+   "top": 473.0,
    "attrs": {
     "text": "e4 · B3"
    }
@@ -90,7 +90,7 @@
    "type": "wokwi-led-strip",
    "id": "tira_e5",
    "left": 544.0,
-   "top": 594.3,
+   "top": 603.5,
    "rotate": 0.0,
    "attrs": {
     "pixels": "8"
@@ -100,36 +100,46 @@
    "type": "wokwi-text",
    "id": "t_e5",
    "left": 614.0,
-   "top": 566.8,
+   "top": 576.0,
    "attrs": {
     "text": "e5 · B6"
    }
   },
   {
    "type": "wokwi-led-strip",
-   "id": "tira_e6",
-   "left": 176.0,
-   "top": 205.6,
-   "rotate": -78.47,
+   "id": "tira_e6a",
+   "left": 199.0,
+   "top": 258.5,
+   "rotate": -90.0,
    "attrs": {
-    "pixels": "10"
+    "pixels": "6"
    }
   },
   {
    "type": "wokwi-text",
    "id": "t_e6",
-   "left": 309.0,
-   "top": 213.1,
+   "left": 201.0,
+   "top": 266.0,
    "attrs": {
     "text": "e6 · B4"
    }
   },
   {
    "type": "wokwi-led-strip",
+   "id": "tira_e6b",
+   "left": 268.0,
+   "top": 189.5,
+   "rotate": 0.0,
+   "attrs": {
+    "pixels": "4"
+   }
+  },
+  {
+   "type": "wokwi-led-strip",
    "id": "tira_e7",
-   "left": 176.0,
-   "top": 92.9,
-   "rotate": 180.0,
+   "left": 291.0,
+   "top": 120.5,
+   "rotate": -90.0,
    "attrs": {
     "pixels": "6"
    }
@@ -137,36 +147,46 @@
   {
    "type": "wokwi-text",
    "id": "t_e7",
-   "left": 223.0,
-   "top": 65.4,
+   "left": 378.0,
+   "top": 128.0,
    "attrs": {
     "text": "e7 · B8"
    }
   },
   {
    "type": "wokwi-led-strip",
-   "id": "tira_e8",
-   "left": 268.0,
-   "top": 205.6,
-   "rotate": 44.42,
+   "id": "tira_e8a",
+   "left": 360.0,
+   "top": 189.5,
+   "rotate": 0.0,
    "attrs": {
-    "pixels": "14"
+    "pixels": "8"
    }
   },
   {
    "type": "wokwi-text",
    "id": "t_e8",
-   "left": 447.0,
-   "top": 213.1,
+   "left": 430.0,
+   "top": 162.0,
    "attrs": {
     "text": "e8 · B9"
+   }
+  },
+  {
+   "type": "wokwi-led-strip",
+   "id": "tira_e8b",
+   "left": 475.0,
+   "top": 258.5,
+   "rotate": 90.0,
+   "attrs": {
+    "pixels": "6"
    }
   },
   {
    "type": "wokwi-text",
    "id": "t_S1",
    "left": 62,
-   "top": 639.8,
+   "top": 649,
    "attrs": {
     "text": "SALIDA S1"
    }
@@ -174,8 +194,8 @@
   {
    "type": "wokwi-text",
    "id": "t_S2",
-   "left": 154,
-   "top": 138.4,
+   "left": 338,
+   "top": 97,
    "attrs": {
     "text": "SALIDA S2"
    }
@@ -184,7 +204,7 @@
    "type": "wokwi-text",
    "id": "t_S3",
    "left": 706,
-   "top": 639.8,
+   "top": 649,
    "attrs": {
     "text": "SALIDA S3"
    }
@@ -192,80 +212,80 @@
   {
    "type": "wokwi-text",
    "id": "t_Z1",
-   "left": 164.6,
-   "top": 506.6,
+   "left": 78.1,
+   "top": 454.2,
    "attrs": {
-    "text": "Z1 Aula A"
+    "text": "Z1\nAula A"
    }
   },
   {
    "type": "wokwi-text",
    "id": "t_Z2",
-   "left": 164.6,
-   "top": 702.0,
+   "left": 146.9,
+   "top": 670.4,
    "attrs": {
-    "text": "Z2 Aula B"
+    "text": "Z2\nAula B"
    }
   },
   {
    "type": "wokwi-text",
    "id": "t_Z3",
-   "left": 307.4,
-   "top": 426.0,
+   "left": 307.3,
+   "top": 532.4,
    "attrs": {
-    "text": "Z3 Laboratorio"
+    "text": "Z3\nLaboratorio"
    }
   },
   {
    "type": "wokwi-text",
    "id": "t_Z4",
-   "left": 440.6,
-   "top": 426.0,
+   "left": 432.7,
+   "top": 532.4,
    "attrs": {
-    "text": "Z4 Oficina"
+    "text": "Z4\nOficina"
    }
   },
   {
    "type": "wokwi-text",
    "id": "t_Z5",
-   "left": 583.4,
-   "top": 426.0,
+   "left": 606.9,
+   "top": 385.2,
    "attrs": {
-    "text": "Z5 Baños"
+    "text": "Z5\nBaños"
    }
   },
   {
    "type": "wokwi-text",
    "id": "t_Z6",
-   "left": 583.4,
-   "top": 506.6,
+   "left": 606.9,
+   "top": 525.5,
    "attrs": {
-    "text": "Z6 Bodega"
+    "text": "Z6\nBodega"
    }
   },
   {
    "type": "wokwi-text",
    "id": "t_Z7",
-   "left": 434.8,
-   "top": 140.6,
+   "left": 315.0,
+   "top": 261.0,
    "attrs": {
-    "text": "Z7 Auditorio"
+    "text": "Z7\nAuditorio"
    }
   },
   {
    "type": "wokwi-text",
    "id": "t_Z8",
-   "left": 583.4,
-   "top": 702.0,
+   "left": 593.1,
+   "top": 670.4,
    "attrs": {
-    "text": "Z8 Recepción"
+    "text": "Z8\nRecepción"
    }
   },
   {
    "type": "wokwi-pir-motion-sensor",
    "id": "pir1",
-   "left": 524.8,
-   "top": 100.6,
+   "left": 419.0,
+   "top": 236.0,
    "attrs": {
     "delayTime": "6"
    }
@@ -273,8 +293,8 @@
   {
    "type": "wokwi-pir-motion-sensor",
    "id": "pir2",
-   "left": 134.6,
-   "top": 426.6,
+   "left": 182.1,
+   "top": 429.2,
    "attrs": {
     "delayTime": "6"
    }
@@ -283,7 +303,7 @@
    "type": "wokwi-pushbutton",
    "id": "b0",
    "left": 330,
-   "top": 975,
+   "top": 984,
    "attrs": {
     "color": "red",
     "key": "0",
@@ -294,7 +314,7 @@
    "type": "wokwi-pushbutton",
    "id": "b1",
    "left": 455,
-   "top": 975,
+   "top": 984,
    "attrs": {
     "color": "yellow",
     "key": "1",
@@ -305,7 +325,7 @@
    "type": "wokwi-pushbutton",
    "id": "b2",
    "left": 580,
-   "top": 975,
+   "top": 984,
    "attrs": {
     "color": "yellow",
     "key": "2",
@@ -316,7 +336,7 @@
    "type": "wokwi-pushbutton",
    "id": "b3",
    "left": 705,
-   "top": 975,
+   "top": 984,
    "attrs": {
     "color": "yellow",
     "key": "3",
@@ -327,7 +347,7 @@
    "type": "wokwi-pushbutton",
    "id": "b4",
    "left": 830,
-   "top": 975,
+   "top": 984,
    "attrs": {
     "color": "yellow",
     "key": "4",
@@ -338,7 +358,7 @@
    "type": "wokwi-pushbutton",
    "id": "b5",
    "left": 955,
-   "top": 975,
+   "top": 984,
    "attrs": {
     "color": "yellow",
     "key": "5",
@@ -349,7 +369,7 @@
    "type": "wokwi-pushbutton",
    "id": "b6",
    "left": 1080,
-   "top": 975,
+   "top": 984,
    "attrs": {
     "color": "yellow",
     "key": "6",
@@ -360,7 +380,7 @@
    "type": "wokwi-pushbutton",
    "id": "b7",
    "left": 1205,
-   "top": 975,
+   "top": 984,
    "attrs": {
     "color": "blue",
     "key": "7",
@@ -371,7 +391,7 @@
    "type": "wokwi-pushbutton",
    "id": "b8",
    "left": 1330,
-   "top": 975,
+   "top": 984,
    "attrs": {
     "color": "yellow",
     "key": "8",
@@ -382,7 +402,7 @@
    "type": "wokwi-pushbutton",
    "id": "b9",
    "left": 1455,
-   "top": 975,
+   "top": 984,
    "attrs": {
     "color": "yellow",
     "key": "9",
@@ -393,7 +413,7 @@
    "type": "wokwi-buzzer",
    "id": "bz1",
    "left": 200,
-   "top": 925,
+   "top": 934,
    "attrs": {
     "volume": "0.1"
    }
@@ -453,19 +473,31 @@
   ],
   [
    "tira_e5:DOUT",
-   "tira_e6:DIN",
+   "tira_e6a:DIN",
    "green",
    []
   ],
   [
-   "tira_e6:DOUT",
+   "tira_e6a:DOUT",
+   "tira_e6b:DIN",
+   "green",
+   []
+  ],
+  [
+   "tira_e6b:DOUT",
    "tira_e7:DIN",
    "green",
    []
   ],
   [
    "tira_e7:DOUT",
-   "tira_e8:DIN",
+   "tira_e8a:DIN",
+   "green",
+   []
+  ],
+  [
+   "tira_e8a:DOUT",
+   "tira_e8b:DIN",
    "green",
    []
   ],
