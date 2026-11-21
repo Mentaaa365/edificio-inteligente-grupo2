@@ -3,7 +3,7 @@
 **Grupo 2 · Modelos y Simulación · UNEMI**  
 **Guía preparada el 20 de noviembre de 2026 · Montaje a cargo del grupo**
 
-La maqueta se arma sobre un tablero MDF de **60 × 60 cm**. Los 8 pasillos, los 82 LED, los índices de la tira y los pesos del modelo son los mismos de las fases 0, 1 y 3; solo cambia la disposición: el pasillo largo S1–C1–C2–C3–C4–S3 se pliega en forma de U. Por eso el firmware, la simulación y el servidor siguen valiendo sin cambios en el cálculo. Las coordenadas de `modelo/grafo.json` ya están en la nueva base, y de ellas salen el plano, el diagrama de Wokwi y el plano de replanteo.
+La maqueta se arma sobre un tablero MDF de **60 × 60 cm**. Los 8 pasillos, los 82 LED, los índices de la tira y los pesos del modelo son los mismos de las fases 0, 1 y 3; solo cambia la disposición. El plano es el de un edificio real de una planta: muros exteriores, salas con su puerta, pasillos en ángulo recto (e6 y e8 tienen forma de L), tres salidas en las fachadas y, fuera del edificio, el panel de control, el punto de encuentro y la electrónica. Por eso el firmware, la simulación y el servidor siguen valiendo sin cambios en el cálculo. Las coordenadas de `modelo/grafo.json` (nodos, salas, puertas, muros y quiebres de los pasillos) ya están en la nueva base, y de ellas salen el plano, el diagrama de Wokwi, el dashboard y el plano de replanteo.
 
 | Entregable | Archivo | Estado |
 |---|---|---|
@@ -51,49 +51,59 @@ La maqueta se arma sobre un tablero MDF de **60 × 60 cm**. Los 8 pasillos, los 
 
 ![Plano de replanteo](Plano_montaje_60x60.png)
 
-Todas las medidas se toman desde la **esquina inferior izquierda** del tablero, con el panel de control arriba y la electrónica abajo.
+Todas las medidas se toman desde la **esquina inferior izquierda** del tablero. El edificio ocupa el centro; el panel de control va en la esquina superior derecha, el punto de encuentro y la leyenda en la superior izquierda y la electrónica abajo, todo fuera de los muros.
 
 | Punto | x (cm) | y (cm) |
 |---|---:|---:|
-| S1 (salida oeste) | 6,7 | 15,7 |
-| C1 | 20,0 | 15,7 |
-| C4 | 40,0 | 15,7 |
-| S3 (salida este) | 53,3 | 15,7 |
-| C2 | 20,0 | 35,7 |
-| C3 | 40,0 | 35,7 |
-| C5 | 23,3 | 52,0 |
-| S2 (salida norte) | 13,3 | 52,0 |
+| S1 (salida oeste) | 6,7 | 15,0 |
+| C1 | 20,0 | 15,0 |
+| C4 | 40,0 | 15,0 |
+| S3 (salida este) | 53,3 | 15,0 |
+| C2 | 20,0 | 35,0 |
+| C3 | 40,0 | 35,0 |
+| C5 | 26,7 | 45,0 |
+| S2 (salida norte) | 26,7 | 55,0 |
+| Quiebre de e6 | 20,0 | 45,0 |
+| Quiebre de e8 | 40,0 | 45,0 |
 
-| Zona | Dónde |
-|---|---|
-| Z1 Aula A (PIR2) | Bloque izquierdo, entre e1 y e3, a la izquierda de e2 |
-| Z2 Aula B | Debajo de e1 |
-| Z3 Laboratorio y Z4 Oficina | Bloque central, debajo de e3, entre e2 y e4 (mitad izquierda y derecha) |
-| Z5 Baños y Z6 Bodega | Bloque derecho, a la derecha de e4 (arriba y abajo) |
-| Z8 Recepción | Debajo de e5 |
-| Z7 Auditorio (PIR1) | A la derecha de e8, encima de e3 |
+El muro exterior es un rectángulo de 6,7 a 53,3 cm en x y de 6,7 a 36,0 cm en y, con un cuerpo norte (x 19,0–41,0; y 36,0–46,0) que rodea el Auditorio y un vestíbulo de 3 cm de ancho (x 25,2–28,2) que sube hasta S2 en y = 55,0. Las salidas S1 y S3 son aberturas en las fachadas oeste y este; S2, en el extremo del vestíbulo norte.
 
-Cada pasillo mide en el tablero exactamente su número de LED × 1,667 cm: e1 y e5, 13,3 cm; e2, e3 y e4, 20 cm; e6, 16,7 cm; e7, 10 cm; e8, 23,3 cm. `plano_montaje.py` lo comprueba cada vez que se genera el plano, junto con que ninguna tira atraviese un recinto. Las paredes se pueden marcar con lápiz o con tiras de cartón de 1–2 cm de alto, dejando 1 cm libre a cada lado de la tira.
+| Zona | Sala (cm) | Puerta (bisagra → extremo de la hoja) |
+|---|---|---|
+| Z1 Aula A (PIR2) | x 6,7–19,0 · y 16,0–36,0 | muro este, (19,0; 16,3) → (19,0; 18,3), a e2 junto a C1 |
+| Z2 Aula B | x 6,7–21,0 · y 6,7–14,0 | muro norte, (18,7; 14,0) → (16,7; 14,0), a e1 junto a C1 |
+| Z3 Laboratorio | x 21,0–29,9 · y 6,7–34,0 | muro norte, (21,3; 34,0) → (23,3; 34,0), a e3 junto a C2 |
+| Z4 Oficina | x 30,1–39,0 · y 6,7–34,0 | muro norte, (38,7; 34,0) → (36,7; 34,0), a e3 junto a C3 |
+| Z5 Baños | x 41,0–53,3 · y 26,0–36,0 | muro oeste, (41,0; 33,7) → (41,0; 31,7), a e4 junto a C3 |
+| Z6 Bodega | x 41,0–53,3 · y 16,0–25,7 | muro oeste, (41,0; 16,3) → (41,0; 18,3), a e4 junto a C4 |
+| Z7 Auditorio (PIR1) | x 21,0–39,0 · y 36,0–44,0 | muro norte, (30,0; 44,0) → (28,0; 44,0), a e8 junto a C5 |
+| Z8 Recepción | x 39,0–53,3 · y 6,7–14,0 | muro norte, (41,3; 14,0) → (43,3; 14,0), a e5 junto a C4 |
+
+El Auditorio queda dentro del anillo e3–e6–e8, así que se puede salir de él por C5 (S2) o, si ese lado se bloquea, rodeando por C2 o C3. Cada puerta está a menos de su largo en el modelo (3 m; 4 m el Auditorio) de su intersección, para que la heurística de A* siga siendo admisible.
+
+Cada pasillo mide en el tablero exactamente su número de LED × 1,667 cm: e1 y e5, 13,3 cm; e2, e3 y e4, 20 cm; e6, 16,7 cm en L (10 cm hacia el norte desde C2 y 6,7 cm hacia el este hasta C5); e7, 10 cm; e8, 23,3 cm en L (13,3 cm hacia el este desde C5 y 10 cm hacia el sur hasta C3). `plano_montaje.py` lo comprueba cada vez que se genera el plano, junto con que ninguna tira atraviese una sala, que cada puerta caiga en su sala y que las salidas estén en un muro exterior.
+
+**Muros y puertas.** Los muros se marcan con lápiz y se levantan con tiras de cartón o MDF de 1–2 cm de alto, dejando el ancho de pasillo libre a los lados de la tira (unos 2 cm). En cada puerta se deja una abertura de 2 cm y se dibuja el arco de giro hacia dentro de la sala. Los extintores son adhesivos decorativos (cuatro, en las posiciones rojas del plano); la maqueta es de una planta y no lleva escaleras.
 
 ## 3. Tira LED
 
-La tira se corta en **tres piezas** y las esquinas se doblan sin cortar:
+La tira se corta en **tres piezas** y los quiebres se doblan sin cortar (7 pliegues, marcados con **D** en el plano):
 
-| Pieza | Pasillos | LED | Índices | Largo | Esquinas que se doblan (entre los LED) |
+| Pieza | Pasillos | LED | Índices | Largo | Pliegues (entre los LED) |
 |---|---|---:|---|---:|---|
 | A | e1 → e2 → e3 → e4 → e5 | 52 | 0–51 | 86,7 cm | C1 (7 y 8), C2 (19 y 20), C3 (31 y 32), C4 (43 y 44) |
-| B | e6 → e7 | 16 | 52–67 | 26,7 cm | C5 (61 y 62) |
-| C | e8 | 14 | 68–81 | 23,3 cm | — |
+| B | e6 → e7 | 16 | 52–67 | 26,7 cm | quiebre de e6 (57 y 58), C5 (61 y 62) |
+| C | e8 | 14 | 68–81 | 23,3 cm | quiebre de e8 (75 y 76) |
 
 La pieza A sale del primer metro y las piezas B y C del segundo (sobran 38 LED para practicar).
 
 1. **Sentido.** Las flechas impresas en la tira van de DIN a DOUT y deben seguir las flechas verdes del plano: e1 empieza en S1, e6 en C2 y e8 en C5.
 2. **Corte.** Solo por la línea marcada entre dos LED, a mitad de los pads de cobre.
-3. **Pliegue en las esquinas.** Doblar la tira 45° hacia atrás y luego otra vez para formar el ángulo, justo en el espacio entre los dos LED indicados, nunca encima de un LED. Fijar el pliegue con una gota de pegamento. Practiquen primero con los LED sobrantes. Si un pliegue deja de conducir, se corta en esa línea y se puentea con tres hilos soldados como en el paso 4.
+3. **Pliegues.** Doblar la tira 45° hacia atrás y luego otra vez para formar el ángulo, justo en el espacio entre los dos LED indicados, nunca encima de un LED. Fijar el pliegue con una gota de pegamento. Practiquen primero con los LED sobrantes. Si un pliegue deja de conducir, se corta en esa línea y se puentea con tres hilos soldados como en el paso 4.
 4. **Puentes soldados (3 hilos: 5 V, datos, GND).**
    - **Entrada (S1):** de la protoboard a los pads 5 V / DIN / GND del LED 0.
-   - **J5 (unos 45 cm):** de los pads DOUT/5 V/GND del final de la pieza A (S3) a la entrada de la pieza B (C2). Va pegado a la base, por fuera de los recintos.
-   - **J7 (unos 15 cm):** del final de la pieza B (S2) a la entrada de la pieza C (C5).
+   - **J5 (unos 45 cm):** de los pads DOUT/5 V/GND del final de la pieza A (S3) a la entrada de la pieza B (C2). Va **por debajo de la base**: se taladran dos agujeros de 4–5 mm junto a S3 y junto a C2, se pasan los tres hilos y se fijan con cinta por debajo del tablero. Así no cruza las salas ni los muros.
+   - **J7 (unos 15 cm):** del final de la pieza B (S2) a la entrada de la pieza C (C5). Va por el vestíbulo norte, junto a la tira de e7.
    - Usen hilos del UTP: naranja para 5 V, verde para datos y azul para GND, por ejemplo. Estañen primero el pad y el hilo, y luego únanlos en 2–3 s con el cautín. Comprueben con el multímetro, en continuidad, que no quedó un puente entre pads vecinos.
 5. **Condensadores de 1000 µF:** uno entre 5 V y GND en la entrada de la pieza A (protoboard) y otro en la entrada de la pieza B (C2). La pata larga (+) va a 5 V.
 6. **Pegado.** La tira trae adhesivo; refuercen con cinta doble faz. No peguen nada hasta pasar la prueba 3 de la sección 5.
@@ -119,7 +129,7 @@ La pieza A sale del primer metro y las piezas B y C del segundo (sobran 38 LED p
 | B1–B4 (e2, e3, e4, e6) | GPIO 25, 26, 27, 32 | La otra pata a GND (`INPUT_PULLUP`: pulsado = LOW) |
 | B5, B6, B8, B9 (e1, e5, e7, e8) | GPIO 33, 13, 18, 19 | La otra pata a GND |
 
-Los pulsadores van en el panel de control (borde superior). Se suelda un hilo de UTP a cada pata y el otro extremo se pincha en la protoboard. Todas las patas de GND del panel se pueden unir entre sí y bajar con un solo hilo.
+Los pulsadores van en el panel de control (esquina superior derecha, dos columnas de cinco). Se suelda un hilo de UTP a cada pata y el otro extremo se pincha en la protoboard. Todas las patas de GND del panel se pueden unir entre sí y bajar con un solo hilo.
 
 **Consumo.** Con `BRILLO_GLOBAL 60` (de 255) un LED encendido en un solo color usa unos 60/255 × 20 mA ≈ 4,7 mA, así que los 82 LED en rojo intermitente (`SIN_RUTA`) piden unos 0,4 A. La fuente de 3 A sobra; la prueba P11 de la Fase 4 lo mide.
 

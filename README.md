@@ -30,7 +30,7 @@ Ante una zona bloqueada o una emergencia simulada, el sistema calcula la ruta se
 
 ![Plano](docs/Plano_Fase_0.png)
 
-La maqueta va en un tablero de 60 × 60 cm. Medidas de replanteo: [`docs/Plano_montaje_60x60.png`](docs/Plano_montaje_60x60.png).
+La maqueta va en un tablero de 60 × 60 cm, con el plano de un edificio de una planta: muros, salas con puerta, pasillos en ángulo recto y salidas en las fachadas. Medidas de replanteo: [`docs/Plano_montaje_60x60.png`](docs/Plano_montaje_60x60.png).
 
 ## Uso rápido
 

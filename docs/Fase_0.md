@@ -3,7 +3,7 @@
 **Grupo 2 · Modelos y Simulación · UNEMI · Días 1 y 2**  
 **Cotización consultada el 13 de noviembre de 2026 · Fase cerrada el 16 de noviembre de 2026**
 
-> **Actualización del 20 de noviembre de 2026.** La maqueta se arma sobre un tablero MDF de **60 × 60 cm** y no sobre la base de 100 × 54 cm. Los pasillos, los LED y los pesos del modelo no cambian; solo se pliega el pasillo largo en forma de U. El replanteo, la compra real y el montaje están en la [Fase 2](Fase_2.md).
+> **Actualización del 20 de noviembre de 2026.** La maqueta se arma sobre un tablero MDF de **60 × 60 cm** y no sobre la base de 100 × 54 cm. Los pasillos, los LED y los pesos del modelo no cambian; solo cambia la disposición: un edificio de una planta con muros, salas con puerta, pasillos en ángulo recto (e6 y e8 en L) y la tira doblada en sus quiebres. El replanteo, la compra real y el montaje están en la [Fase 2](Fase_2.md).
 
 ## Alcance propuesto para el arranque
 
