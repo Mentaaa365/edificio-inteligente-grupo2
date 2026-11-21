@@ -83,7 +83,7 @@ Con el Auditorio ocupado, los pasillos de C5 se penalizan. El Laboratorio (Z3) c
 
 ### Dijkstra, A* y BFS (`fig2_algoritmos.png`, `algoritmos.csv`)
 
-En 55 casos (cada zona en cada escenario con ruta), A* encuentra el mismo costo que Dijkstra expandiendo 3,7 nodos de media frente a 6,2. BFS, que cuenta tramos y no metros, falla en un caso: en S0 manda al Laboratorio por S1 (23 m) cuando por S2 son 19 m, con el mismo número de tramos.
+En 55 casos (cada zona en cada escenario con ruta), A* encuentra el mismo costo que Dijkstra expandiendo 4,0 nodos de media frente a 6,2 (con las coordenadas de la base de 60 × 60 cm; con las de la base anterior eran 3,7). La heurística es la distancia en línea recta a la salida más cercana, que nunca supera el costo real porque cada pasillo mide en la base lo mismo que su número de LED. BFS, que cuenta tramos y no metros, falla en un caso: en S0 manda al Laboratorio por S1 (23 m) cuando por S2 son 19 m, con el mismo número de tramos.
 
 ### Barrido de bloqueos y ajuste de curvas (`fig4_barrido_ajuste.png`, `barrido_bloqueos.csv`)
 
@@ -130,7 +130,7 @@ Cada prueba parte de un reinicio (`7`) seguido de la alarma (`0`).
 
 Si el bucle `loop()` no tuviera la pausa de 2 ms (`PAUSA_CICLO_MS`), Wokwi simularía a menos del 10 % de la velocidad real.
 
-Diferencias con la maqueta real: en `config.h`, `SIMULACION 1` usa `tone()` para el buzzer pasivo de Wokwi y espera 3 s a los PIR. En la maqueta se pone en `0` (buzzer activo y 60 s de espera). En el diagrama los LED solo llevan el cable de datos; en la maqueta la tira se alimenta desde la fuente de 5 V con tierra común, condensador de 1000 µF y resistencia de 330–470 Ω en la línea de datos.
+Diferencias con la maqueta real: en `config.h`, `SIMULACION 1` usa `tone()` para el buzzer pasivo de Wokwi y espera 3 s a los PIR. En la maqueta se pone en `0`: el zumbador activo TMB12A05 suena con el GPIO 23 en alto a través de un transistor NPN, y los PIR esperan 60 s. Wokwi usa la placa ESP32 DevKit C de 38 pines; la de la maqueta es una DevKit de 30 pines con CH340, con los mismos números de GPIO. En el diagrama los LED solo llevan el cable de datos; en la maqueta la tira se alimenta desde la fuente de 5 V con tierra común, condensador de 1000 µF y resistencia de 330–470 Ω en la línea de datos.
 
 ## 5. Verificación sin hardware
 
