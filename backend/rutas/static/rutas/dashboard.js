@@ -64,12 +64,20 @@ const pasillos = () => GRAFO.aristas.filter((a) => a.tipo === "pasillo");
 // así que se invierte: y_svg = (y_max + margen) - y_m.
 function dibujarPlano(elemento, resultado) {
   const MARGEN = 3;
-  const xs = GRAFO.nodos.map((n) => n.x_m), ys = GRAFO.nodos.map((n) => n.y_m);
+  const muros = (GRAFO.maqueta && GRAFO.maqueta.edificio) || [];
+  const xs = [...GRAFO.nodos.map((n) => n.x_m), ...muros.map((p) => p[0])];
+  const ys = [...GRAFO.nodos.map((n) => n.y_m), ...muros.map((p) => p[1])];
   const x0 = Math.min(...xs) - MARGEN, x1 = Math.max(...xs) + MARGEN;
   const y0 = Math.min(...ys) - MARGEN, y1 = Math.max(...ys) + MARGEN;
   const X = (n) => n.x_m - x0;
   const Y = (n) => y1 - n.y_m;
   const nodo = Object.fromEntries(GRAFO.nodos.map((n) => [n.id, n]));
+  const punto = (p) => ({ x_m: p[0], y_m: p[1] });
+  // Recorrido de una arista de "desde" a "hacia", con los quiebres en ángulo recto de grafo.json ("trazo").
+  const recorrido = (a, desde) => {
+    const pts = [nodo[a.u], ...(a.trazo || []).map(punto), nodo[a.v]];
+    return desde === a.v ? pts.reverse() : pts;
+  };
 
   elemento.setAttribute("viewBox", `0 0 ${x1 - x0} ${y1 - y0}`);
   elemento.replaceChildren();
@@ -91,6 +99,16 @@ function dibujarPlano(elemento, resultado) {
   const enRuta = new Set(Object.values(r.detalle || {}).flatMap((d) => d.aristas));
   const sentido = r.sentido || {};
 
+  // Edificio y salas de cada zona (si grafo.json los trae).
+  if (muros.length) {
+    elemento.appendChild(svg("polygon", { points: muros.map((p) => `${X(punto(p))},${Y(punto(p))}`).join(" "), class: "edificio" }));
+  }
+  for (const z of zonas()) {
+    if (!z.sala) continue;
+    const [sx0, sy0, sx1, sy1] = z.sala;
+    elemento.appendChild(svg("rect", { x: sx0 - x0, y: y1 - sy1, width: sx1 - sx0, height: sy1 - sy0, class: "sala" }));
+  }
+
   // Aristas: primero las puertas y luego los pasillos, para que estos queden encima.
   const aristas = [...GRAFO.aristas].sort((a, b) => (a.tipo === "puerta" ? -1 : 1) - (b.tipo === "puerta" ? -1 : 1));
   for (const a of aristas) {
@@ -99,17 +117,31 @@ function dibujarPlano(elemento, resultado) {
     else if (aisladas.has(a.id)) clase += " aislada";
     else if (enRuta.has(a.id)) clase += " ruta";
     // Si la arista está en una ruta se dibuja desde -> hacia, con la flecha al final.
-    let [desde, hacia] = sentido[a.id] && enRuta.has(a.id) ? sentido[a.id] : [a.u, a.v];
-    const p = nodo[desde], q = nodo[hacia];
-    const linea = svg("line", { x1: X(p), y1: Y(p), x2: X(q), y2: Y(q), class: clase });
+    const desde = sentido[a.id] && enRuta.has(a.id) ? sentido[a.id][0] : a.u;
+    const pts = recorrido(a, desde);
+    const p = pts[0], q = pts[pts.length - 1];
+    const linea = svg("polyline", { points: pts.map((n) => `${X(n)},${Y(n)}`).join(" "), class: clase });
     if (enRuta.has(a.id) && !bloqueos.has(a.id)) linea.setAttribute("marker-end", `url(#${idFlecha})`);
     linea.appendChild(svg("title", {}, `${a.id} · ${a.longitud_m} m${a.pulsador ? " · pulsador " + a.pulsador : ""}`));
     elemento.appendChild(linea);
     if (a.tipo === "pasillo") {
-      const horizontal = Math.abs(Y(p) - Y(q)) < 0.1;
+      // Rótulo en la mitad del recorrido, al lado del tramo donde cae.
+      let resto = a.longitud_m / 2, m = [X(p), Y(p)], horizontal = true;
+      for (let i = 1; i < pts.length; i++) {
+        const ax = X(pts[i - 1]), ay = Y(pts[i - 1]), bx = X(pts[i]), by = Y(pts[i]);
+        const largo = Math.hypot(bx - ax, by - ay);
+        if (resto <= largo) {
+          m = [ax + (bx - ax) * resto / largo, ay + (by - ay) * resto / largo];
+          horizontal = Math.abs(by - ay) < 0.1;
+          break;
+        }
+        resto -= largo;
+      }
+      // Encima del tramo, salvo que ahí haya una sala (p. ej. e3 bajo el Auditorio): entonces debajo.
+      const enSala = (mx, my) => zonas().some((z) => z.sala && mx > z.sala[0] && mx < z.sala[2] && my > z.sala[1] && my < z.sala[3]);
+      const abajo = horizontal && enSala(m[0] + x0, y1 - m[1] + 1) && !enSala(m[0] + x0, y1 - m[1] - 1.6);
       elemento.appendChild(svg("text", {
-        x: (X(p) + X(q)) / 2 + (horizontal ? 0 : 1.2),
-        y: (Y(p) + Y(q)) / 2 + (horizontal ? -0.9 : 0.4), class: "etq-arista",
+        x: m[0] + (horizontal ? 0 : 1.2), y: m[1] + (horizontal ? (abajo ? 1.6 : -0.9) : 0.4), class: "etq-arista",
       }, a.id));
     }
   }

@@ -82,7 +82,9 @@ main {
 
 /* ---------- plano SVG ---------- */
 .plano { width: 100%; height: auto; display: block; background: var(--fondo); border-radius: 8px; }
-.plano .arista { stroke: var(--gris); stroke-linecap: round; }
+.plano .arista { stroke: var(--gris); stroke-linecap: round; stroke-linejoin: round; fill: none; }
+.plano .edificio { fill: var(--tarjeta); stroke: var(--texto); stroke-width: .35; stroke-linejoin: miter; opacity: .9; }
+.plano .sala { fill: none; stroke: var(--suave); stroke-width: .12; opacity: .7; }
 .plano .pasillo { stroke-width: .9; }
 .plano .puerta { stroke-width: .45; stroke-dasharray: .6 .4; }
 .plano .ruta { stroke: var(--verde); }
