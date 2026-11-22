@@ -12,7 +12,7 @@ En esta fase se añade un servidor en la PC. Recibe las líneas JSON que el ESP3
 | Tiempo real con Django Channels (WebSocket) y sondeo de respaldo | [`backend/rutas/consumers.py`](../backend/rutas/consumers.py) | Hecho, con pruebas |
 | ESP32 simulado | [`backend/rutas/management/commands/simular_esp32.py`](../backend/rutas/management/commands/simular_esp32.py) | Hecho |
 | Puente USB para la maqueta real | [`backend/rutas/management/commands/puente_serial.py`](../backend/rutas/management/commands/puente_serial.py) | Hecho y probado con un puerto simulado; falta probarlo con la placa |
-| Pruebas automáticas | [`backend/rutas/tests/`](../backend/rutas/tests) | 49 de 49 pasan |
+| Pruebas automáticas | [`backend/rutas/tests/`](../backend/rutas/tests) | 50 de 50 pasan |
 | Guía de instalación en Windows | [`backend/README.md`](../backend/README.md) | Hecho |
 
 ## 1. Arquitectura
@@ -129,6 +129,26 @@ Maqueta (ESP32) ──USB──▶ COM5 ──▶ puente_serial ──HTTP──
 
 Los pasos para el integrante que tiene la maqueta están en [`backend/README.md`](../backend/README.md), sección «Conectar la maqueta real por USB».
 
+### Exportar el histórico y calcular las métricas
+
+El dashboard guarda cada evento en SQLite. Para las métricas del informe (sección de resultados):
+
+```powershell
+# 1. En backend\, con el servidor detenido o en marcha (no importa):
+..\.venv\Scripts\python.exe manage.py exportar_historico --origen esp32
+#    -> datos\experimentos.csv  (una fila por evento: estado, bloqueos, PIR, calculo_us, coincide, ruta de cada zona)
+
+# 2. En la raíz del repositorio:
+.\.venv\Scripts\python.exe -m pip install -r simulacion\requirements.txt
+.\.venv\Scripts\python.exe simulacion\analisis_experimentos.py
+#    -> simulacion\resultados\metricas_esp32.csv   (n, media, desviación, mínimo, P95, máximo por nº de bloqueos)
+#    -> simulacion\resultados\fig5_calculo_esp32.png (diagrama de caja)
+```
+
+- El evento `LISTO` se excluye por defecto: es el cálculo del arranque, no lo provoca ningún pulsador (`--incluir-listo` lo cuenta).
+- La desviación es la muestral (n − 1). Con menos de 2 eventos en un grupo se informa 0.
+- `datos/experimentos.csv` sí se versiona y va en el RAR: son los datos crudos de las pruebas.
+
 ## 6. Verificación
 
 | Comprobación | Resultado al 17 de noviembre de 2026 |
@@ -138,16 +158,17 @@ Los pasos para el integrante que tiene la maqueta están en [`backend/README.md`
 | Umbral de α con el Auditorio ocupado | El Laboratorio sale por S2 con α = 0,20 y por S1 con α = 0,30, coherente con el umbral 0,25 de la Fase 1 |
 | Costos múltiplos de 0,25 m (2 decimales bastan) | Cierto en las 1 024 combinaciones probadas |
 | Línea JSON con el formato exacto de `informar()` | Aceptada y marcada como coincidente |
-| API: validación, token, CSRF, comandos entregados una sola vez, filtros del histórico | Pasan (49 de 49 pruebas en total, `manage.py test rutas`) |
+| API: validación, token, CSRF, comandos entregados una sola vez, filtros del histórico | Pasan (`manage.py test rutas`) |
 | Puente USB con un puerto simulado: mensajes de arranque, saludo, 4 eventos con el formato exacto de `informar()` partidos en trozos de 64 bytes | Los 4 eventos llegan por HTTP al servidor de pruebas, se guardan con origen `esp32` y coinciden; el texto que no es JSON se ignora; con el servidor caído sigue leyendo |
 | `puente_serial --listar` y un puerto inexistente en este PC | Lista vacía con aviso; reintenta cada 2 s con un mensaje claro |
-| WebSocket: un evento y un escenario llegan al navegador; se rechaza un `Origin` ajeno | Pasan (incluidas en las 49) |
+| WebSocket: un evento y un escenario llegan al navegador; se rechaza un `Origin` ajeno | Pasan |
 | Dashboard en el navegador con `simular_esp32` (15 eventos, 15 % de discrepancias) | Plano, tabla, alertas, gráficas e histórico se actualizan por WebSocket; las 2 discrepancias inyectadas aparecen como alerta |
 | Sondeo de respaldo | Con el WebSocket cerrado a propósito, los 3 eventos siguientes llegaron por sondeo; luego se volvió a conectar |
 | Ancho de celular (375 px) | Sin desplazamiento horizontal de la página |
+| `puente_serial` con la maqueta física: PIR1, PIR2 y pulsadores B0–B7 | Los eventos llegan al dashboard y el servidor informa «coincide». 41 líneas registradas iguales al modelo; cálculo en el ESP32: media 55,5 µs sin bloqueos (n = 20) y 29 µs con 6 bloqueos |
+| `exportar_historico` (eventos con y sin zonas aisladas) | Pasa (50 de 50 pruebas en total) |
 
 **No comprobado todavía:**
-- `puente_serial` con la placa física: este PC no tiene un ESP32 conectado. Es la primera prueba que debe hacer el integrante que tiene la maqueta.
 - Envío desde un ESP32 real o desde Wokwi por WiFi (Fase 4).
 - Varias pestañas abiertas durante horas.
 - El servidor en otro PC de la red local.
