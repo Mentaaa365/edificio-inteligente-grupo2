@@ -125,7 +125,7 @@ La pieza A sale del primer metro y las piezas B y C del segundo (sobran 38 LED p
 | Zumbador pata + (la más larga, marcada +) | 5 V | Diodo 1N4148 en paralelo con el zumbador: raya (cátodo) hacia 5 V |
 | PIR1 (Z7): VCC / OUT / GND | 5 V / GPIO 34 / GND | Puente de disparo en **H** (repetible), tiempo al mínimo, sensibilidad media |
 | PIR2 (Z1): VCC / OUT / GND | 5 V / GPIO 35 / GND | Igual que PIR1 |
-| B0 Alarma / B7 Reinicio | GPIO 4 / GPIO 14 | La otra pata de cada pulsador va a GND |
+| B0 Alarma / B7 Reinicio | GPIO 12 / GPIO 14 | La otra pata de cada pulsador va a GND. En la maqueta B0 va al GPIO 12 porque en la protoboard el lado de D4 queda tapado por la placa; en Wokwi sigue en el GPIO 4 (`config.h` elige según `SIMULACION`) |
 | B1–B4 (e2, e3, e4, e6) | GPIO 25, 26, 27, 32 | La otra pata a GND (`INPUT_PULLUP`: pulsado = LOW) |
 | B5, B6, B8, B9 (e1, e5, e7, e8) | GPIO 33, 13, 18, 19 | La otra pata a GND |
 
@@ -141,7 +141,7 @@ Cada etapa se prueba antes de pasar a la siguiente. Anoten el resultado y guarde
 |---:|---|---|
 | 1 | Placa | Instalar el controlador CH340 y subir `firmware/verificacion_esp32`. El Monitor serie a 115200 muestra `FASE 0 OK - ESP32` |
 | 2 | Fuente y protoboard | Sin nada más conectado, el multímetro marca 5 V (±0,25 V) entre las líneas roja y azul, con la polaridad correcta |
-| 3 | Pieza A con el 74AHCT125 | En `config.h` poner `#define SIMULACION 0` y subir `evacuacion_esp32`. Tras 60 s, pulsar B0 (puenteando GPIO 4 a GND): e1, e4 y e5 se ven en verde con el punto brillante hacia S1 y S3 |
+| 3 | Pieza A con el 74AHCT125 | En `config.h` poner `#define SIMULACION 0` y subir `evacuacion_esp32`. Tras 60 s, pulsar B0 (puenteando GPIO 12 a GND): e1, e4 y e5 se ven en verde con el punto brillante hacia S1 y S3 |
 | 4 | Piezas B y C | Con la alarma, e6 y e7 en verde hacia S2; e8 apagado. Con e6 bloqueado (GPIO 32 a GND), e6 en rojo |
 | 5 | Pulsadores | Uno por uno, con el Monitor serie: cada pulsación produce un solo evento JSON con el pasillo correcto en `bloqueos` |
 | 6 | PIR | Esperar 60 s de calentamiento. Al mover la mano a 10 cm, `"ocupadas":["Z7"]` (PIR1) o `["Z1"]` (PIR2) |
