@@ -12,7 +12,12 @@
 #define PIN_LED     2      // LED integrado de la placa
 
 // Pulsadores: un lado al GPIO y el otro a GND, con INPUT_PULLUP (pulsado = LOW)
-#define PIN_ALARMA    4    // B0
+#if SIMULACION
+#define PIN_ALARMA    4    // B0 en Wokwi
+#else
+#define PIN_ALARMA    12   // B0 en la maqueta: en la protoboard el lado de D4 queda tapado por la placa.
+                           // GPIO 12 es pin de arranque, pero el pulsador solo lo lleva a GND (seguro).
+#endif
 #define PIN_REINICIO  14   // B7
 // Pulsador que bloquea cada pasillo, en el orden e1..e8 de grafo.h:
 //                                  e1  e2  e3  e4  e5  e6  e7  e8

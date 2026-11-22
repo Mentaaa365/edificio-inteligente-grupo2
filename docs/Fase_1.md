@@ -83,7 +83,7 @@ Con el Auditorio ocupado, los pasillos de C5 se penalizan. El Laboratorio (Z3) c
 
 ### Dijkstra, A* y BFS (`fig2_algoritmos.png`, `algoritmos.csv`)
 
-En 55 casos (cada zona en cada escenario con ruta), A* encuentra el mismo costo que Dijkstra expandiendo 4,0 nodos de media frente a 6,2 (con las coordenadas de la base de 60 × 60 cm; con las de la base anterior eran 3,7). La heurística es la distancia en línea recta a la salida más cercana, que nunca supera el costo real porque cada pasillo mide en la base lo mismo que su número de LED. BFS, que cuenta tramos y no metros, falla en un caso: en S0 manda al Laboratorio por S1 (23 m) cuando por S2 son 19 m, con el mismo número de tramos.
+En 55 casos (cada zona en cada escenario con ruta), A* encuentra el mismo costo que Dijkstra expandiendo 4,0 nodos de media frente a 6,2 (con las coordenadas del plano de 60 × 60 cm; con las de la base anterior eran 3,7). La heurística es la distancia en línea recta a la salida más cercana, que nunca supera el costo real porque cada pasillo mide en la base lo mismo que su número de LED (en e6 y e8, que van en L, la recta entre sus extremos es incluso más corta) y cada puerta está a menos de su largo de su intersección. BFS, que cuenta tramos y no metros, falla en un caso: en S0 manda al Laboratorio por S1 (23 m) cuando por S2 son 19 m, con el mismo número de tramos.
 
 ### Barrido de bloqueos y ajuste de curvas (`fig4_barrido_ajuste.png`, `barrido_bloqueos.csv`)
 
